@@ -10,8 +10,8 @@ La app trabaja en **dos modos operativos**:
 
 ### 1. 🔘 Modo Localización OFF (recolección de datos)
 - El usuario introduce manualmente:
-  - El **punto** de escaneo (número/nombre)
-  - El **nivel/planta** (PB, 1, 2, etc.)
+  - El **punto** de escaneo (número)
+  - El **nivel/planta** (PB, P1,...)
 - La app realiza un escaneo de redes WiFi y envía los resultados como un mensaje JSON a un **servidor MQTT** configurado.
 - Utilizado para **crear una base de datos de huellas WiFi**.
 
