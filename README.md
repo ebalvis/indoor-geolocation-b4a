@@ -32,15 +32,15 @@ La app trabaja en **dos modos operativos**:
     "modelo": "22111317G",
     "producto": "sunstone_eea",
     "sdk": "34",
-    "androidID": "4f2c1264cc83a0c1",
+    "androidID": "0f200264cc00a000",
     "fecha_hora": 1750756597330,
     "nivel": "PB",
     "punto": 1
   },
   "wifi_scans": [
     {
-      "SSID": "innebo",
-      "BSSID": "30:23:03:dc:18:69",
+      "SSID": "wifi_test",
+      "BSSID": "00:23:03:00:18:00",
       "seguridad": "WPA2",
       "potencia": -48,
       "canal": 6,
