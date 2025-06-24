@@ -67,7 +67,8 @@ This project is built using:
     "androidID": "0f200264cc00a000",
     "timestamp": 1750756597330,
     "floor": "G",
-    "point": 1
+    "point": 1,
+    "counter":3
   },
   "wifi_scans": [
     {
