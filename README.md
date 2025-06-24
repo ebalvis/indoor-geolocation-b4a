@@ -23,6 +23,38 @@ The app operates in **two working modes**:
 
 ---
 
+## 🛠️ Development Environment
+
+This project is built using:
+
+### ✔️ IDE & Tools
+- **B4A (Basic for Android)** version **>= 11.80**
+- **B4XPages framework** (optional but recommended for modularity)
+- **Java JDK 11** or later
+- **Android SDK** (API level 29 or higher recommended)
+
+### 📦 Required Libraries
+- `MQTT_B4X` (based on Eclipse Paho MQTT)
+- `Network` (for connectivity checking)
+- `Phone` (for WiFi scan access)
+- `JSON` (for serialization of messages)
+- `Timer`, `StringUtils`, etc. (standard B4A libraries)
+
+### ⚙️ Device Requirements
+- Android device with:
+  - **WiFi scanning capabilities**
+  - **Location permission enabled**
+  - Android **API 21 (Lollipop)** or newer
+
+### 🚀 How to Compile
+1. Download and install **B4A** from [b4x.com](https://www.b4x.com).
+2. Open the `indoor-geolocation-b4a.b4a` project file.
+3. Ensure all required libraries are available in the **Libraries** tab.
+4. Configure your **bridge** or **USB device** for deployment.
+5. Compile and install on a real device (WiFi scanning does not work on emulators).
+
+---
+
 ## 📦 Data Format (JSON Example)
 
 ```json
@@ -58,4 +90,3 @@ The app operates in **two working modes**:
     }
   ]
 }
-
