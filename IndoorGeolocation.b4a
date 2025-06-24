@@ -1,0 +1,529 @@
+﻿Build1=Default,indoorgeolocation.aps.uvigo
+File1=APS.png
+File2=aps2.png
+File3=config.json
+File4=icon.png
+File5=Layout.bal
+File6=LytMain.bal
+File7=paramRegister.json
+FileGroup1=Default Group
+FileGroup2=Default Group
+FileGroup3=Default Group
+FileGroup4=Default Group
+FileGroup5=Default Group
+FileGroup6=Default Group
+FileGroup7=Default Group
+Group=Default Group
+Library1=b4xpreferencesdialog
+Library10=ultimatelistview
+Library11=xui
+Library12=animationplus
+Library2=core
+Library3=jmqtt
+Library4=json
+Library5=mlwifi400
+Library6=permissionsmanager
+Library7=phone
+Library8=randomaccessfile
+Library9=reflection
+ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="5" android:targetSdkVersion="33"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.LightTheme)~\n~'End of default text.~\n~AddApplicationText(~\n~    <meta-data android:name="Eduardo Balvis"  android:value="Tu Nombre o Empresa"/>~\n~    <meta-data android:name="ebalvis@uvigo.gal" android:value="tu.email@dominio.com"/>~\n~    <meta-data android:name="developer_website" android:value="https://tusitio.com"/>~\n~)~\n~AddApplicationText(<activity android:name="aps.uvigo.objects.preferenceactivity"/>)~\n~'AddApplicationText(<activity android:name="anywheresoftware.b4a.objects.preferenceactivity"/>)~\n~~\n~AddPermission(android.permission.ACCESS_COARSE_LOCATION)~\n~AddPermission(android.permission.ACCESS_FINE_LOCATION)~\n~AddPermission(android.permission.ACCESS_WIFI_STATE)~\n~~\n~
+Module1=Starter
+NumberOfFiles=7
+NumberOfLibraries=12
+NumberOfModules=1
+Version=13.3
+@EndOfDesignText@
+#Region  Project Attributes 
+	#ApplicationLabel: IndoorGeolocation
+	#VersionCode: 1
+	#VersionName: 
+	'SupportedOrientations possible values: unspecified, landscape or portrait.
+	#SupportedOrientations: portrait
+	#CanInstallToExternalStorage: False
+#End Region
+
+#Region  Activity Attributes 
+	#FullScreen: True
+	#IncludeTitle: False
+#End Region
+
+Sub Process_Globals
+	'These global variables will be declared once when the application starts.
+	'These variables can be accessed from all modules.
+	Dim WifiObject As MLwifi
+	Private wifiScan As MLScan
+	Type TRegistro(fabricante As String, modelo As String,producto As String,sdk As String,androidID As String, fecha_hora As Long,nivel As String, punto As Int,counter As Int )
+	Type TWifiScan(SSID As String, BSSID As String, seguridad As String, potencia As Int, canal As Int, distancia As Double, data_0 As Int, data_1 As Int, data_2 As Int, data_3 As Int, data_4 As Int, data_5 As Int, data_6 As Int, data_7 As Int, data_8 As Int, data_9 As Int)
+	Dim pmanager As PermissionsManager
+	Dim phone As Phone
+	Private Config1 As Map
+	Private DataPoint As Map
+	Private xui As XUI
+	Private androidID As String
+	Private tickCountExit As Long
+	Private ErroresReconectando As Int=0
+End Sub
+
+Sub Globals
+	'These global variables will be redeclared each time the activity is created.
+	Private btnConfig As Button
+	Private prefdialog As PreferencesDialog
+	Private ConfigFile As String = "config.map"
+	Dim conv As ByteConverter
+	Dim client As MqttClient
+	Dim connectedMQTT As Boolean
+	Private lblInfo As Label
+	Private tmrMQTTReconnect As Timer
+	Private tmrAutoScan As Timer
+	Private btnScan As Button
+	Private lblSend As Label
+	Private lblScan As Label
+	Private lblDisconnect As Label
+	Private lblConnect As Label
+	Private scanningWifi As Boolean
+	Private counter As Int
+	Private counterSec As Int
+	Private lblIconWifi As ImageView
+	Private CLIENT_ID As String
+End Sub
+
+Sub Activity_Create(FirstTime As Boolean)
+	Activity.LoadLayout("LytMain")
+	If FirstTime Then
+		CheckAndRequestPermissions
+	End If
+	setStateMQTT
+	setStateScan
+	androidID=GetAndroidID
+	tmrMQTTReconnect.Initialize("tmrMQTTReconnect",1000)
+	tmrAutoScan.Initialize("tmrAutoScan",1000)
+	tmrMQTTReconnect.Enabled=True
+	tmrAutoScan.Enabled=True
+	lblSend.Text=""
+	CLIENT_ID = $"APS_${DateTime.Now Mod 100000}"$
+	If CLIENT_ID.Length > 23 Then
+		CLIENT_ID = CLIENT_ID.SubString2(0, 23)
+	End If
+End Sub
+
+Sub Activity_Resume
+	If LoadConfig Then
+		connect_MQTT
+	End If
+End Sub
+
+Sub Activity_Pause (UserClosed As Boolean)
+
+End Sub
+Sub Activity_KeyPress (KeyCode As Int) As Boolean
+
+		Dim Answ As Int
+		Select KeyCode
+			Case KeyCodes.KEYCODE_BACK
+				If (DateTime.Now-tickCountExit)<2000 Then
+					ExitApplication
+				Else
+					tickCountExit=DateTime.Now
+					ToastMessageShow("Doble pulsación para salir",False)
+					Return True
+				End If
+		End Select
+
+
+End Sub
+Sub setStateMQTT
+	If connectedMQTT Then
+		lblConnect.Text=""
+	Else
+		lblConnect.Text=""
+		End If
+		'lblConnect.visible=connectedMQTT
+		'lblDisconnect.Visible=Not(lblConnect.Visible)
+End Sub
+
+Sub setStateScan
+	If  Not(Config1.IsInitialized) Or Not(Config1.Get("keyAutoFind")) Then
+		lblScan.Visible=False
+	Else
+		lblScan.Visible=Not(lblScan.Visible)
+	End If
+End Sub
+
+Sub GetAndroidID As String
+	Dim p As Phone
+	Return p.GetSettings("android_id")
+End Sub
+
+Sub SaveTRegistroToMap(r As TRegistro) As Map
+	Dim m As Map
+	m.Initialize
+	m.Put("fabricante", r.fabricante)
+	m.Put("modelo", r.modelo)
+	m.Put("producto", r.producto)
+	m.Put("sdk", r.sdk)
+	m.Put("androidID", androidID)
+	m.Put("fecha_hora", r.fecha_hora)
+	m.Put("nivel", r.nivel)
+	m.Put("punto", r.punto)
+	m.Put("counter", r.counter)
+	Return m
+End Sub
+
+Sub TWifiScanToMap(awifiScan As TWifiScan) As Map
+	Dim m As Map
+	m.Initialize
+	m.Put("SSID", awifiScan.SSID)
+	m.Put("BSSID", awifiScan.BSSID)
+	m.Put("seguridad", awifiScan.seguridad)
+	m.Put("potencia", awifiScan.potencia)
+	m.Put("canal", awifiScan.canal)
+	m.Put("distancia", awifiScan.distancia)
+	m.Put("data_0", awifiScan.data_0)
+	m.Put("data_1", awifiScan.data_1)
+	m.Put("data_2", awifiScan.data_2)
+	m.Put("data_3", awifiScan.data_3)
+	m.Put("data_4", awifiScan.data_4)
+	m.Put("data_5", awifiScan.data_5)
+	m.Put("data_6", awifiScan.data_6)
+	m.Put("data_7", awifiScan.data_7)
+	m.Put("data_8", awifiScan.data_8)
+	m.Put("data_9", awifiScan.data_9)
+	Return m
+End Sub
+Sub ConvertToJSON(registro As TRegistro, wifiScans As List) As String
+	Dim json As JSONGenerator
+	Dim map As Map
+	map.Initialize
+	map.Put("registro", SaveTRegistroToMap(registro))
+	map.Put("wifi_scans", wifiScans)
+	json.Initialize(map)
+	Return json.ToString
+End Sub
+
+Sub wifi_ScanDone(Results() As String, Count As Int)
+	counter=counter+1
+	lblSend.Text=counter
+	ProgressDialogHide
+	scanningWifi=False
+	If Not(connectedMQTT) Then
+		ToastMessageShow("No estas conectado al servidor MQTT.",True)
+		Return
+	End If
+	If Count=0 Then
+		ToastMessageShow("No se han detectado APs, inténtalo de nuevo.",True)
+		Return
+	End If
+	Dim r As TRegistro
+	r.Initialize
+	r.fabricante = phone.Manufacturer
+	r.modelo = phone.Model
+	r.producto=phone.Product
+	r.sdk=phone.SdkVersion
+	r.androidID=androidID
+	r.fecha_hora = DateTime.Now ' Almacena la fecha y hora actual en formato Long
+	If  Config1.Get("keyAutoFind")=False Then
+		r.nivel=DataPoint.Get("keyLevel")
+		r.punto=DataPoint.Get("keyPoint")
+	End If
+	r.counter=counter
+	Dim record As TWifiScan
+	record.initialize
+	Dim ListForList As List
+	ListForList.Initialize()
+	Dim returnedEntry() As String
+	For i = 0 To Results.Length-1
+		returnedEntry = Regex.Split(",",Results(i))
+		record.ssid = returnedEntry(0)
+		record.seguridad = returnedEntry(1)
+		record.potencia = returnedEntry(2)
+		record.bssid = returnedEntry(4)
+		record.canal = returnedEntry(10)
+		record.distancia=returnedEntry(12)
+		'record.data_0=returnedEntry(3)
+		record.data_1=returnedEntry(5)
+		record.data_2=returnedEntry(6)
+		record.data_3=returnedEntry(7)
+		record.data_4=returnedEntry(8)
+		record.data_5=returnedEntry(9)
+		record.data_6=returnedEntry(11)
+		ListForList.Add(TWifiScanToMap(record))
+	Next
+
+	If client.Connected Then
+		Dim data_json As String=ConvertToJSON(r,ListForList)
+		If  Config1.Get("keyAutoFind")=False Then
+			client.Publish2(topicRegistro,data_json.GetBytes("UTF8"),0,True)
+		Else
+			client.Publish2(topicLocation,data_json.GetBytes("UTF8"),0,True)
+		End If
+		If  Config1.Get("keyAutoFind")=False Then
+			ToastMessageShow("Detectadas "&Results.Length&" APs"&CRLF&"Enviados datos...",True)
+		End If
+	Else
+		Log("MQTT no conectado")
+		ToastMessageShow("MQTT no conectado",True)
+	End If
+
+End Sub
+
+Sub btnScan_Click
+	scanAP
+End Sub
+
+Sub scanAP
+	lblInfo.Visible=False
+	If Not(connectedMQTT) Then
+		ToastMessageShow("No conectado al servidor MQTT.",False)
+	Else
+		If Not (WifiObject.isWifiEnabled) Then
+			ToastMessageShow("La wifi no está activada.",False)
+		Else
+			If Config1.Get("keyAutoFind") Then
+				scanningWifi=True
+				wifiScan.startScan("wifi",False)
+			Else
+				prefdialog.Initialize(Activity, "Datos punto", 300dip,500dip)
+				prefdialog.LoadFromJson(File.ReadString(File.DirAssets, "paramRegister.json"))
+				If Not (DataPoint.IsInitialized) Then
+					DataPoint.Initialize
+					DataPoint.Put("keyLevel","PB")
+					DataPoint.Put("keyPoint",1)
+				End If
+				Wait For (prefdialog.ShowDialog(DataPoint, "OK", "CANCELAR")) Complete (Result As Int)
+				If Result = xui.DialogResponse_Positive Then
+					ProgressDialogShow("Escaneando...")
+					wifiScan.startScan("wifi",False)
+				End If
+
+			End If
+
+		End If
+	End If
+End Sub
+
+Sub btnConfig_Click
+	If connectedMQTT Then client.Close
+	LoadConfig
+	tmrMQTTReconnect.Enabled=False
+	tmrAutoScan.Enabled=False
+	Wait For (prefdialog.ShowDialog(Config1, "OK", "CANCELAR")) Complete (Result As Int)
+	If Result = xui.DialogResponse_Positive Then
+		SaveConfig(Config1)
+		btnScan.Enabled=Not(Config1.Get("keyAutoFind"))
+		lblScan.Visible=False
+	End If
+	ErroresReconectando=0
+	counter=0
+	connect_MQTT
+End Sub
+
+Sub tmrAutoScan_Tick
+	'btnScan.Enabled=Not(Config1.Get("keyAutoFind"))
+	If Not(scanningWifi) Then
+		scanAP
+	Else
+		counterSec=counterSec+1
+		If counterSec>10 Then
+			counterSec=0
+			lblSend.Text=(counter*6)&" scan/min"
+			counter=0
+			lblSend.Visible=True
+		End If
+	End If
+	setStateScan
+End Sub
+
+Sub tmrMQTTReconnect_Tick
+	If ErroresReconectando>=3 Then
+		tmrMQTTReconnect.Enabled=False
+	End If
+	If client.Connected= False Then
+		connect_MQTT
+	End If
+End Sub
+
+#Region 'MQTT'
+Sub getTopic(location As Boolean,result As Boolean)
+	Dim topic As String=Config1.Get("keyTopic")
+	If topic=Null Then
+		topic="GX"
+	End If
+	If location Then
+		topic= "indoor_geolocation/"&topic&"/location"
+	Else
+		topic= "indoor_geolocation/"&topic&"/registro"
+	End If
+	If result Then
+		topic= topic&"/result"
+	Else
+		topic= topic&"/data"
+	End If
+	Return topic
+End Sub
+
+Sub topicRegistro As String
+	Return getTopic(False,False)
+End Sub
+Sub topicRegistroResult As String
+	Return getTopic(False,True)
+End Sub
+Sub topicLocation As String
+	Return getTopic(True,False)
+End Sub
+Sub topicLocationResult As String
+	Return getTopic(True,True)
+End Sub
+Sub connect_MQTT
+	Try
+		If  Config1.Get("keySSL") Then
+			Dim serverURI As String = "ssl://" & Config1.Get("keyHostMQTT") & ":" & Config1.Get("keyPortMQTT")
+			client.Initialize("clientMQTT", serverURI, CLIENT_ID)
+		Else
+			client.Initialize("clientMQTT","tcp://"&Config1.Get("keyHostMQTT")&":"&Config1.Get("keyPortMQTT"),CLIENT_ID)
+		End If
+	Catch
+		ToastMessageShow(LastException.Message,True)
+		Return
+	End Try
+	If Config1.Get("keyUser")<>"*" Then
+		Dim mo As MqttConnectOptions
+		Dim user As String=Config1.Get("keyUser")
+		Dim pass As String=Config1.Get("keyPass")
+		mo.Initialize(user.trim, pass.trim)
+	End If
+	Try
+		If Config1.Get("keyUser")<>"*" Then
+			client.Connect2(mo)
+		Else
+			client.Connect
+		End If
+		If ErroresReconectando<1 Then
+			tmrMQTTReconnect.Enabled=True
+		Else
+			tmrMQTTReconnect.Enabled=False
+		End If
+		tmrAutoScan.Enabled=Config1.Get("keyAutoFind")
+	Catch
+		ToastMessageShow("Error conectando "&LastException.Message,True)
+	End Try
+End Sub
+
+Private Sub clientMQTT_Connected (Success As Boolean)
+	Log($"Conectado: ${Success}"$)
+	connectedMQTT=Success
+	If Success Then
+		ErroresReconectando=0
+		Sleep(500)
+		If client.Connected Then
+			If Config1.Get("keyAutoFind") Then
+				client.Subscribe(topicLocationResult, 0)
+				scanAP
+			Else
+				client.Subscribe(topicRegistroResult, 0)
+			End If
+			client.Subscribe("indoor_geolocation/registro/result", 0)
+		Else
+			ToastMessageShow("Conexión MQTT no activa" , False)
+		End If
+	Else
+		ErroresReconectando=ErroresReconectando+1
+		Log(LastException)
+		ToastMessageShow(LastException, True)
+	End If
+	setStateMQTT
+End Sub
+
+Private Sub clientMQTT_Disconnected
+	Log("Desconectado MQTT")
+	connectedMQTT=False
+	setStateMQTT
+	'ToastMessageShow("Desonectado MQTT" , False)
+End Sub
+
+Private Sub clientMQTT_MessageArrived (Topic As String, Payload() As Byte)
+	Dim datos As String = conv.StringFromBytes(Payload,"UTF8")
+	' Crear un objeto JSONParser
+	Dim parser As JSONParser
+	parser.Initialize(datos)
+	Try
+		' Convertir la cadena JSON a un Map 
+		Dim dataMap As Map
+		dataMap = parser.NextObject
+		lblInfo.Text="ID Registro: "&dataMap.Get("last_id")&CRLF&"Insertados: "&dataMap.Get("affectedRows")
+		lblInfo.Visible=True
+	Catch
+		ToastMessageShow(datos,True)
+	End Try
+	Log(dataMap)
+End Sub
+
+#End Region
+#Region 'Configuracion'
+private Sub LoadConfig As Boolean
+	Config1.Initialize
+	xui.SetDataFolder ("preferences")
+	prefdialog.Initialize(Activity, "Configuración", 300dip, 500dip)
+	prefdialog.LoadFromJson(File.ReadString(File.DirAssets, "config.json"))
+	'prefdialog.SetOptions("Cities", File.ReadList(File.DirAssets, "cities.txt"))
+	prefdialog.SetEventsListener(Me, "PrefDialog")
+	Return LoadSavedData
+End Sub
+
+Private Sub PrefDialog_IsValid (TempData As Map) As Boolean
+'	Dim number As Int = TempData.GetDefault("NumberToValidate", 0)
+'	If number < 10 Or number > 20 Then
+'		prefdialog.ScrollToItemWithError("NumberToValidate")
+'		Return False
+'	End If
+	Return True
+End Sub
+
+Private Sub LoadSavedData As Boolean
+	Try
+		If File.Exists(xui.DefaultFolder, ConfigFile) Then
+			Dim jsonString As String = File.ReadString(xui.DefaultFolder, ConfigFile)
+			Dim JSONParser As JSONParser
+			JSONParser.Initialize(jsonString)
+			Dim m As Map = JSONParser.NextObject
+			Config1=m
+			SaveConfig(Config1)
+			Return True
+		Else
+			Config1.Put("keyHostMQTT",    "test.mosquitto.org")
+			Config1.Put("keyPortMQTT",    1883)
+			Config1.Put("keyUser",        "*")
+			Config1.Put("keyPass",        "")
+			Config1.Put("keySSL",        False)
+			Config1.Put("keyTopic",       "GX")
+			Config1.Put("keyAutoFind",    False)
+			' …añade aquí todos los keys que necesites por defecto…
+			SaveConfig(Config1)
+			Return True
+		End If
+	Catch
+		Log(LastException)
+		Return False
+	End Try
+End Sub
+
+Private Sub SaveConfig (Config As Map)
+	Dim JSONGenerator As JSONGenerator
+	JSONGenerator.Initialize(Config)
+	Dim jsonString As String = JSONGenerator.ToString
+	File.WriteString(xui.DefaultFolder, ConfigFile, jsonString)
+End Sub
+#End Region
+
+Sub CheckAndRequestPermissions
+	pmanager.ApplicationResumeAllowed=False
+	For Each permission As String In pmanager.AllPermissionsInManifestFile
+		pmanager.CheckAndRequestPermission(permission)
+		Wait For Activity_PermissionResult (permission As String, Result As Boolean)
+		If Result=False Then
+			ToastMessageShow("Sin permisos "&permission, False)
+			Log("Sin permisos "&permission)
+		End If
+	Next
+	pmanager.ApplicationResumeAllowed=True 'Stop preventing Application to resume.
+End Sub
+

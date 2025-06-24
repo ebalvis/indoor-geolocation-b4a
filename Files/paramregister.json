@@ -1,0 +1,32 @@
+{
+    "Version": 1.66,
+    "Theme": "Dark Theme",
+    "Items": [
+        {
+            "title": "Datos punto",
+            "type": "Separator",
+            "key": "",
+            "required": false
+        },
+        {
+            "options": [
+                "S1",
+                "PB",
+                "P1",
+                "P2",
+                "P3",
+                "P4"
+            ],
+            "title": "Nivel",
+            "type": "Short Options",
+            "key": "keyLevel",
+            "required": true
+        },
+        {
+            "title": "ID Punto",
+            "type": "Numeric Range",
+            "key": "keyPoint",
+            "required": true
+        }
+    ]
+}

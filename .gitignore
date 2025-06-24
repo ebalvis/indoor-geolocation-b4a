@@ -1,0 +1,5 @@
+# Ignorar todos los archivos .zip
+*.zip
+
+# Ignorar la carpeta AutoBackups y su contenido
+AutoBackups/

@@ -1,0 +1,66 @@
+{
+    "Version": 1.66,
+    "Theme": "Dark Theme",
+    "Items": [
+        {
+            "title": "Configuración MQTT",
+            "type": "Separator",
+            "key": "",
+            "required": false
+        },
+        {
+            "title": "Host MQTT",
+            "type": "Text",
+            "key": "keyHostMQTT",
+            "required": true
+        },
+        {
+            "title": "Puerto MQTT",
+            "type": "Number",
+            "key": "keyPortMQTT",
+            "required": true
+        },
+        {
+            "title": "Usuario",
+            "type": "Text",
+            "key": "keyUser",
+            "required": false
+        },
+        {
+            "title": "Contraseña",
+            "type": "Password",
+            "key": "keyPass",
+            "required": false
+        },
+        {
+            "title": "SSL",
+            "type": "Boolean",
+            "key": "keySSL",
+            "required": false
+        },
+        {
+            "title": "Parámetros",
+            "type": "Separator",
+            "key": "",
+            "required": false
+        },
+        {
+            "title": "Topic grupo",
+            "type": "Text",
+            "key": "keyTopic",
+            "required": true
+        },
+        {
+            "title": "Modo localización",
+            "type": "Boolean",
+            "key": "keyAutoFind",
+            "required": true
+        },
+        {
+            "title": "Background",
+            "type": "Boolean",
+            "key": "keyBackground location",
+            "required": false
+        }
+    ]
+}
