@@ -93,10 +93,10 @@ This project is built using:
 
 ---
 
-## 🔄 Cambios en la última versión
+## 🔄 Changes in the Latest Version
 
-- Se añade control automático del permiso y activación del GPS.
-- Se amplía el formato del mensaje JSON con información del dispositivo y marca temporal.
-- Se introduce cálculo de distancia estimada basada en RSSI.
-- Se añaden campos extendidos para redes WiFi (data_0 a data_9).
-- Se refactoriza y reestructura el código para mejorar mantenibilidad y preparar futuras funcionalidades.
+- Added automatic handling of GPS activation and location permissions.
+- Extended JSON format with device metadata and precise timestamp.
+- Introduced RSSI-based distance estimation for each WiFi access point.
+- Included extended WiFi scan fields (data_0 to data_9) for advanced signal analysis.
+- Refactored and reorganized code for better maintainability and to support future enhancements.
