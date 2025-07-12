@@ -90,7 +90,7 @@ This project is built using:
     }
   ]
 }
-
+```
 ---
 
 ## 🔄 Changes in the Latest Version
