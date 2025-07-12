@@ -1,5 +1,45 @@
-# Ignorar todos los archivos .zip
-*.zip
+# Archivos de compilación
+Objects/
+Bin/
+*.apk
+*.jar
+*.xml
+*.dex
+*.b4xlib
 
-# Ignorar la carpeta AutoBackups y su contenido
-AutoBackups/
+# Archivos temporales
+*.temp
+*.tmp
+*.bak
+*.swp
+
+# Archivos de configuración local
+*.meta
+*.b4a.lock
+*.b4a.xml
+*.b4x
+*.DS_Store
+Thumbs.db
+
+# Configuraciones específicas del IDE
+*.log
+*.tlog
+*.pdb
+*.suo
+*.user
+*.vs/
+
+# Salida de compilaciones
+Gen/
+Build/
+Files/bin/
+Files/Temp/
+
+# Backups automáticos del editor
+*.~b4a
+*.~b4j
+*.~b4i
+
+# Otros
+.idea/
+.vscode/

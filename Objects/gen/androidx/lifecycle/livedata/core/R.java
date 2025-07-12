@@ -8,95 +8,30 @@
 package androidx.lifecycle.livedata.core;
 
 public final class R {
-  public static final class anim {
-    public static final int fragment_fast_out_extra_slow_in=0x7f010000;
-  }
-  public static final class animator {
-    public static final int fragment_close_enter=0x7f020000;
-    public static final int fragment_close_exit=0x7f020001;
-    public static final int fragment_fade_enter=0x7f020002;
-    public static final int fragment_fade_exit=0x7f020003;
-    public static final int fragment_open_enter=0x7f020004;
-    public static final int fragment_open_exit=0x7f020005;
-  }
   public static final class attr {
-    /**
-     * <p>May be a string value, using '\\;' to escape characters such as
-     * '\\n' or '\\uxxxx' for a unicode character;
-     */
-    public static final int adSize=0x7f030000;
-    /**
-     * <p>May be a string value, using '\\;' to escape characters such as
-     * '\\n' or '\\uxxxx' for a unicode character;
-     */
-    public static final int adSizes=0x7f030001;
-    /**
-     * <p>May be a string value, using '\\;' to escape characters such as
-     * '\\n' or '\\uxxxx' for a unicode character;
-     */
-    public static final int adUnitId=0x7f030002;
     /**
      * <p>May be a floating point value, such as "<code>1.2</code>".
      */
-    public static final int alpha=0x7f030003;
-    /**
-     * <p>May be a reference to another resource, in the form
-     * "<code>@[+][<i>package</i>:]<i>type</i>/<i>name</i></code>" or a theme
-     * attribute in the form
-     * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
-     * <p>Must be one of the following constant values.</p>
-     * <table>
-     * <colgroup align="left" />
-     * <colgroup align="left" />
-     * <colgroup align="left" />
-     * <tr><th>Constant</th><th>Value</th><th>Description</th></tr>
-     * <tr><td>icon_only</td><td>2</td><td></td></tr>
-     * <tr><td>standard</td><td>0</td><td></td></tr>
-     * <tr><td>wide</td><td>1</td><td></td></tr>
-     * </table>
-     */
-    public static final int buttonSize=0x7f030004;
-    /**
-     * <p>May be a boolean value, such as "<code>true</code>" or
-     * "<code>false</code>".
-     */
-    public static final int circleCrop=0x7f030005;
-    /**
-     * <p>May be a reference to another resource, in the form
-     * "<code>@[+][<i>package</i>:]<i>type</i>/<i>name</i></code>" or a theme
-     * attribute in the form
-     * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
-     * <p>Must be one of the following constant values.</p>
-     * <table>
-     * <colgroup align="left" />
-     * <colgroup align="left" />
-     * <colgroup align="left" />
-     * <tr><th>Constant</th><th>Value</th><th>Description</th></tr>
-     * <tr><td>auto</td><td>2</td><td></td></tr>
-     * <tr><td>dark</td><td>0</td><td></td></tr>
-     * <tr><td>light</td><td>1</td><td></td></tr>
-     * </table>
-     */
-    public static final int colorScheme=0x7f030006;
+    public static final int alpha=0x7f010000;
     /**
      * <p>May be a reference to another resource, in the form
      * "<code>@[+][<i>package</i>:]<i>type</i>/<i>name</i></code>" or a theme
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      */
-    public static final int font=0x7f030007;
+    public static final int font=0x7f010001;
     /**
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
      */
-    public static final int fontProviderAuthority=0x7f030008;
+    public static final int fontProviderAuthority=0x7f010002;
     /**
      * <p>May be a reference to another resource, in the form
      * "<code>@[+][<i>package</i>:]<i>type</i>/<i>name</i></code>" or a theme
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      */
-    public static final int fontProviderCerts=0x7f030009;
+    public static final int fontProviderCerts=0x7f010003;
     /**
      * <p>Must be one of the following constant values.</p>
      * <table>
@@ -116,7 +51,7 @@ public final class R {
      * default typeface will be used instead.</td></tr>
      * </table>
      */
-    public static final int fontProviderFetchStrategy=0x7f03000a;
+    public static final int fontProviderFetchStrategy=0x7f010004;
     /**
      * <p>May be an integer value, such as "<code>100</code>".
      * <p>Must be one of the following constant values.</p>
@@ -129,22 +64,22 @@ public final class R {
      * timeout and wait until a reply is received from the font provider.</td></tr>
      * </table>
      */
-    public static final int fontProviderFetchTimeout=0x7f03000b;
+    public static final int fontProviderFetchTimeout=0x7f010005;
     /**
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
      */
-    public static final int fontProviderPackage=0x7f03000c;
+    public static final int fontProviderPackage=0x7f010006;
     /**
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
      */
-    public static final int fontProviderQuery=0x7f03000d;
+    public static final int fontProviderQuery=0x7f010007;
     /**
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
      */
-    public static final int fontProviderSystemFontFamily=0x7f03000e;
+    public static final int fontProviderSystemFontFamily=0x7f010008;
     /**
      * <p>Must be one of the following constant values.</p>
      * <table>
@@ -156,374 +91,245 @@ public final class R {
      * <tr><td>normal</td><td>0</td><td></td></tr>
      * </table>
      */
-    public static final int fontStyle=0x7f03000f;
+    public static final int fontStyle=0x7f010009;
     /**
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
      */
-    public static final int fontVariationSettings=0x7f030010;
+    public static final int fontVariationSettings=0x7f01000a;
     /**
      * <p>May be an integer value, such as "<code>100</code>".
      */
-    public static final int fontWeight=0x7f030011;
+    public static final int fontWeight=0x7f01000b;
     /**
      * <p>May be a floating point value, such as "<code>1.2</code>".
      */
-    public static final int imageAspectRatio=0x7f030012;
-    /**
-     * <p>Must be one of the following constant values.</p>
-     * <table>
-     * <colgroup align="left" />
-     * <colgroup align="left" />
-     * <colgroup align="left" />
-     * <tr><th>Constant</th><th>Value</th><th>Description</th></tr>
-     * <tr><td>adjust_height</td><td>2</td><td></td></tr>
-     * <tr><td>adjust_width</td><td>1</td><td></td></tr>
-     * <tr><td>none</td><td>0</td><td></td></tr>
-     * </table>
-     */
-    public static final int imageAspectRatioAdjust=0x7f030013;
-    /**
-     * <p>May be a floating point value, such as "<code>1.2</code>".
-     */
-    public static final int lStar=0x7f030014;
+    public static final int lStar=0x7f01000c;
     /**
      * <p>May be a reference to another resource, in the form
      * "<code>@[+][<i>package</i>:]<i>type</i>/<i>name</i></code>" or a theme
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      */
-    public static final int nestedScrollViewStyle=0x7f030015;
+    public static final int nestedScrollViewStyle=0x7f01000d;
     /**
      * <p>May be a reference to another resource, in the form
      * "<code>@[+][<i>package</i>:]<i>type</i>/<i>name</i></code>" or a theme
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      */
-    public static final int queryPatterns=0x7f030016;
-    /**
-     * <p>May be a reference to another resource, in the form
-     * "<code>@[+][<i>package</i>:]<i>type</i>/<i>name</i></code>" or a theme
-     * attribute in the form
-     * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
-     * <p>May be a string value, using '\\;' to escape characters such as
-     * '\\n' or '\\uxxxx' for a unicode character;
-     */
-    public static final int scopeUris=0x7f030017;
+    public static final int queryPatterns=0x7f01000e;
     /**
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      */
-    public static final int shortcutMatchRequired=0x7f030018;
+    public static final int shortcutMatchRequired=0x7f01000f;
     /**
      * <p>May be an integer value, such as "<code>100</code>".
      */
-    public static final int ttcIndex=0x7f030019;
-  }
-  public static final class bool {
-    public static final int enable_system_alarm_service_default=0x7f040000;
-    public static final int enable_system_foreground_service_default=0x7f040001;
-    public static final int enable_system_job_service_default=0x7f040002;
-    public static final int workmanager_test_configuration=0x7f040003;
+    public static final int ttcIndex=0x7f010010;
   }
   public static final class color {
-    public static final int androidx_core_ripple_material_light=0x7f050000;
-    public static final int androidx_core_secondary_text_default_material_light=0x7f050001;
-    public static final int browser_actions_bg_grey=0x7f050002;
-    public static final int browser_actions_divider_color=0x7f050003;
-    public static final int browser_actions_text_color=0x7f050004;
-    public static final int browser_actions_title_color=0x7f050005;
-    public static final int common_google_signin_btn_text_dark=0x7f050006;
-    public static final int common_google_signin_btn_text_dark_default=0x7f050007;
-    public static final int common_google_signin_btn_text_dark_disabled=0x7f050008;
-    public static final int common_google_signin_btn_text_dark_focused=0x7f050009;
-    public static final int common_google_signin_btn_text_dark_pressed=0x7f05000a;
-    public static final int common_google_signin_btn_text_light=0x7f05000b;
-    public static final int common_google_signin_btn_text_light_default=0x7f05000c;
-    public static final int common_google_signin_btn_text_light_disabled=0x7f05000d;
-    public static final int common_google_signin_btn_text_light_focused=0x7f05000e;
-    public static final int common_google_signin_btn_text_light_pressed=0x7f05000f;
-    public static final int common_google_signin_btn_tint=0x7f050010;
-    public static final int notification_action_color_filter=0x7f050011;
-    public static final int notification_icon_bg_color=0x7f050012;
+    public static final int androidx_core_ripple_material_light=0x7f020000;
+    public static final int androidx_core_secondary_text_default_material_light=0x7f020001;
+    public static final int call_notification_answer_color=0x7f020002;
+    public static final int call_notification_decline_color=0x7f020003;
+    public static final int notification_action_color_filter=0x7f020004;
+    public static final int notification_icon_bg_color=0x7f020005;
+    public static final int vector_tint_color=0x7f020006;
+    public static final int vector_tint_theme_color=0x7f020007;
   }
   public static final class dimen {
-    public static final int browser_actions_context_menu_max_width=0x7f060000;
-    public static final int browser_actions_context_menu_min_padding=0x7f060001;
-    public static final int compat_button_inset_horizontal_material=0x7f060002;
-    public static final int compat_button_inset_vertical_material=0x7f060003;
-    public static final int compat_button_padding_horizontal_material=0x7f060004;
-    public static final int compat_button_padding_vertical_material=0x7f060005;
-    public static final int compat_control_corner_material=0x7f060006;
-    public static final int compat_notification_large_icon_max_height=0x7f060007;
-    public static final int compat_notification_large_icon_max_width=0x7f060008;
-    public static final int notification_action_icon_size=0x7f060009;
-    public static final int notification_action_text_size=0x7f06000a;
-    public static final int notification_big_circle_margin=0x7f06000b;
-    public static final int notification_content_margin_start=0x7f06000c;
-    public static final int notification_large_icon_height=0x7f06000d;
-    public static final int notification_large_icon_width=0x7f06000e;
-    public static final int notification_main_column_padding_top=0x7f06000f;
-    public static final int notification_media_narrow_margin=0x7f060010;
-    public static final int notification_right_icon_size=0x7f060011;
-    public static final int notification_right_side_padding_top=0x7f060012;
-    public static final int notification_small_icon_background_padding=0x7f060013;
-    public static final int notification_small_icon_size_as_large=0x7f060014;
-    public static final int notification_subtext_size=0x7f060015;
-    public static final int notification_top_pad=0x7f060016;
-    public static final int notification_top_pad_large_text=0x7f060017;
+    public static final int compat_button_inset_horizontal_material=0x7f030000;
+    public static final int compat_button_inset_vertical_material=0x7f030001;
+    public static final int compat_button_padding_horizontal_material=0x7f030002;
+    public static final int compat_button_padding_vertical_material=0x7f030003;
+    public static final int compat_control_corner_material=0x7f030004;
+    public static final int compat_notification_large_icon_max_height=0x7f030005;
+    public static final int compat_notification_large_icon_max_width=0x7f030006;
+    public static final int notification_action_icon_size=0x7f030007;
+    public static final int notification_action_text_size=0x7f030008;
+    public static final int notification_big_circle_margin=0x7f030009;
+    public static final int notification_content_margin_start=0x7f03000a;
+    public static final int notification_large_icon_height=0x7f03000b;
+    public static final int notification_large_icon_width=0x7f03000c;
+    public static final int notification_main_column_padding_top=0x7f03000d;
+    public static final int notification_media_narrow_margin=0x7f03000e;
+    public static final int notification_right_icon_size=0x7f03000f;
+    public static final int notification_right_side_padding_top=0x7f030010;
+    public static final int notification_small_icon_background_padding=0x7f030011;
+    public static final int notification_small_icon_size_as_large=0x7f030012;
+    public static final int notification_subtext_size=0x7f030013;
+    public static final int notification_top_pad=0x7f030014;
+    public static final int notification_top_pad_large_text=0x7f030015;
   }
   public static final class drawable {
-    public static final int admob_close_button_black_circle_white_cross=0x7f070000;
-    public static final int admob_close_button_white_circle_black_cross=0x7f070001;
-    public static final int common_full_open_on_phone=0x7f070002;
-    public static final int common_google_signin_btn_icon_dark=0x7f070003;
-    public static final int common_google_signin_btn_icon_dark_focused=0x7f070004;
-    public static final int common_google_signin_btn_icon_dark_normal=0x7f070005;
-    public static final int common_google_signin_btn_icon_dark_normal_background=0x7f070006;
-    public static final int common_google_signin_btn_icon_disabled=0x7f070007;
-    public static final int common_google_signin_btn_icon_light=0x7f070008;
-    public static final int common_google_signin_btn_icon_light_focused=0x7f070009;
-    public static final int common_google_signin_btn_icon_light_normal=0x7f07000a;
-    public static final int common_google_signin_btn_icon_light_normal_background=0x7f07000b;
-    public static final int common_google_signin_btn_text_dark=0x7f07000c;
-    public static final int common_google_signin_btn_text_dark_focused=0x7f07000d;
-    public static final int common_google_signin_btn_text_dark_normal=0x7f07000e;
-    public static final int common_google_signin_btn_text_dark_normal_background=0x7f07000f;
-    public static final int common_google_signin_btn_text_disabled=0x7f070010;
-    public static final int common_google_signin_btn_text_light=0x7f070011;
-    public static final int common_google_signin_btn_text_light_focused=0x7f070012;
-    public static final int common_google_signin_btn_text_light_normal=0x7f070013;
-    public static final int common_google_signin_btn_text_light_normal_background=0x7f070014;
-    public static final int googleg_disabled_color_18=0x7f070015;
-    public static final int googleg_standard_color_18=0x7f070016;
-    public static final int icon=0x7f070017;
-    public static final int notification_action_background=0x7f070018;
-    public static final int notification_bg=0x7f070019;
-    public static final int notification_bg_low=0x7f07001a;
-    public static final int notification_bg_low_normal=0x7f07001b;
-    public static final int notification_bg_low_pressed=0x7f07001c;
-    public static final int notification_bg_normal=0x7f07001d;
-    public static final int notification_bg_normal_pressed=0x7f07001e;
-    public static final int notification_icon_background=0x7f07001f;
-    public static final int notification_template_icon_bg=0x7f070020;
-    public static final int notification_template_icon_low_bg=0x7f070021;
-    public static final int notification_tile_bg=0x7f070022;
-    public static final int notify_panel_notification_icon_bg=0x7f070023;
+    public static final int ic_call_answer=0x7f040000;
+    public static final int ic_call_answer_low=0x7f040001;
+    public static final int ic_call_answer_video=0x7f040002;
+    public static final int ic_call_answer_video_low=0x7f040003;
+    public static final int ic_call_decline=0x7f040004;
+    public static final int ic_call_decline_low=0x7f040005;
+    public static final int icon=0x7f040006;
+    public static final int notification_action_background=0x7f040007;
+    public static final int notification_bg=0x7f040008;
+    public static final int notification_bg_low=0x7f040009;
+    public static final int notification_bg_low_normal=0x7f04000a;
+    public static final int notification_bg_low_pressed=0x7f04000b;
+    public static final int notification_bg_normal=0x7f04000c;
+    public static final int notification_bg_normal_pressed=0x7f04000d;
+    public static final int notification_icon_background=0x7f04000e;
+    public static final int notification_oversize_large_icon_bg=0x7f04000f;
+    public static final int notification_template_icon_bg=0x7f040010;
+    public static final int notification_template_icon_low_bg=0x7f040011;
+    public static final int notification_tile_bg=0x7f040012;
+    public static final int notify_panel_notification_icon_bg=0x7f040013;
   }
   public static final class id {
-    public static final int accessibility_action_clickable_span=0x7f080000;
-    public static final int accessibility_custom_action_0=0x7f080001;
-    public static final int accessibility_custom_action_1=0x7f080002;
-    public static final int accessibility_custom_action_10=0x7f080003;
-    public static final int accessibility_custom_action_11=0x7f080004;
-    public static final int accessibility_custom_action_12=0x7f080005;
-    public static final int accessibility_custom_action_13=0x7f080006;
-    public static final int accessibility_custom_action_14=0x7f080007;
-    public static final int accessibility_custom_action_15=0x7f080008;
-    public static final int accessibility_custom_action_16=0x7f080009;
-    public static final int accessibility_custom_action_17=0x7f08000a;
-    public static final int accessibility_custom_action_18=0x7f08000b;
-    public static final int accessibility_custom_action_19=0x7f08000c;
-    public static final int accessibility_custom_action_2=0x7f08000d;
-    public static final int accessibility_custom_action_20=0x7f08000e;
-    public static final int accessibility_custom_action_21=0x7f08000f;
-    public static final int accessibility_custom_action_22=0x7f080010;
-    public static final int accessibility_custom_action_23=0x7f080011;
-    public static final int accessibility_custom_action_24=0x7f080012;
-    public static final int accessibility_custom_action_25=0x7f080013;
-    public static final int accessibility_custom_action_26=0x7f080014;
-    public static final int accessibility_custom_action_27=0x7f080015;
-    public static final int accessibility_custom_action_28=0x7f080016;
-    public static final int accessibility_custom_action_29=0x7f080017;
-    public static final int accessibility_custom_action_3=0x7f080018;
-    public static final int accessibility_custom_action_30=0x7f080019;
-    public static final int accessibility_custom_action_31=0x7f08001a;
-    public static final int accessibility_custom_action_4=0x7f08001b;
-    public static final int accessibility_custom_action_5=0x7f08001c;
-    public static final int accessibility_custom_action_6=0x7f08001d;
-    public static final int accessibility_custom_action_7=0x7f08001e;
-    public static final int accessibility_custom_action_8=0x7f08001f;
-    public static final int accessibility_custom_action_9=0x7f080020;
-    public static final int action_container=0x7f080021;
-    public static final int action_divider=0x7f080022;
-    public static final int action_image=0x7f080023;
-    public static final int action_text=0x7f080024;
-    public static final int actions=0x7f080025;
-    public static final int adjust_height=0x7f080026;
-    public static final int adjust_width=0x7f080027;
-    public static final int async=0x7f080028;
-    public static final int auto=0x7f080029;
-    public static final int blocking=0x7f08002a;
-    public static final int browser_actions_header_text=0x7f08002b;
-    public static final int browser_actions_menu_item_icon=0x7f08002c;
-    public static final int browser_actions_menu_item_text=0x7f08002d;
-    public static final int browser_actions_menu_items=0x7f08002e;
-    public static final int browser_actions_menu_view=0x7f08002f;
-    public static final int chronometer=0x7f080030;
-    public static final int dark=0x7f080031;
-    public static final int dialog_button=0x7f080032;
-    public static final int forever=0x7f080033;
-    public static final int fragment_container_view_tag=0x7f080034;
-    public static final int icon=0x7f080035;
-    public static final int icon_group=0x7f080036;
-    public static final int icon_only=0x7f080037;
-    public static final int info=0x7f080038;
-    public static final int italic=0x7f080039;
-    public static final int light=0x7f08003a;
-    public static final int line1=0x7f08003b;
-    public static final int line3=0x7f08003c;
-    public static final int none=0x7f08003d;
-    public static final int normal=0x7f08003e;
-    public static final int notification_background=0x7f08003f;
-    public static final int notification_main_column=0x7f080040;
-    public static final int notification_main_column_container=0x7f080041;
-    public static final int right_icon=0x7f080042;
-    public static final int right_side=0x7f080043;
-    public static final int special_effects_controller_view_tag=0x7f080044;
-    public static final int standard=0x7f080045;
-    public static final int tag_accessibility_actions=0x7f080046;
-    public static final int tag_accessibility_clickable_spans=0x7f080047;
-    public static final int tag_accessibility_heading=0x7f080048;
-    public static final int tag_accessibility_pane_title=0x7f080049;
-    public static final int tag_on_apply_window_listener=0x7f08004a;
-    public static final int tag_on_receive_content_listener=0x7f08004b;
-    public static final int tag_on_receive_content_mime_types=0x7f08004c;
-    public static final int tag_screen_reader_focusable=0x7f08004d;
-    public static final int tag_state_description=0x7f08004e;
-    public static final int tag_transition_group=0x7f08004f;
-    public static final int tag_unhandled_key_event_manager=0x7f080050;
-    public static final int tag_unhandled_key_listeners=0x7f080051;
-    public static final int tag_window_insets_animation_callback=0x7f080052;
-    public static final int text=0x7f080053;
-    public static final int text2=0x7f080054;
-    public static final int time=0x7f080055;
-    public static final int title=0x7f080056;
-    public static final int view_tree_lifecycle_owner=0x7f080057;
-    public static final int view_tree_on_back_pressed_dispatcher_owner=0x7f080058;
-    public static final int view_tree_saved_state_registry_owner=0x7f080059;
-    public static final int view_tree_view_model_store_owner=0x7f08005a;
-    public static final int visible_removing_fragment_view_tag=0x7f08005b;
-    public static final int wide=0x7f08005c;
+    public static final int accessibility_action_clickable_span=0x7f050000;
+    public static final int accessibility_custom_action_0=0x7f050001;
+    public static final int accessibility_custom_action_1=0x7f050002;
+    public static final int accessibility_custom_action_10=0x7f050003;
+    public static final int accessibility_custom_action_11=0x7f050004;
+    public static final int accessibility_custom_action_12=0x7f050005;
+    public static final int accessibility_custom_action_13=0x7f050006;
+    public static final int accessibility_custom_action_14=0x7f050007;
+    public static final int accessibility_custom_action_15=0x7f050008;
+    public static final int accessibility_custom_action_16=0x7f050009;
+    public static final int accessibility_custom_action_17=0x7f05000a;
+    public static final int accessibility_custom_action_18=0x7f05000b;
+    public static final int accessibility_custom_action_19=0x7f05000c;
+    public static final int accessibility_custom_action_2=0x7f05000d;
+    public static final int accessibility_custom_action_20=0x7f05000e;
+    public static final int accessibility_custom_action_21=0x7f05000f;
+    public static final int accessibility_custom_action_22=0x7f050010;
+    public static final int accessibility_custom_action_23=0x7f050011;
+    public static final int accessibility_custom_action_24=0x7f050012;
+    public static final int accessibility_custom_action_25=0x7f050013;
+    public static final int accessibility_custom_action_26=0x7f050014;
+    public static final int accessibility_custom_action_27=0x7f050015;
+    public static final int accessibility_custom_action_28=0x7f050016;
+    public static final int accessibility_custom_action_29=0x7f050017;
+    public static final int accessibility_custom_action_3=0x7f050018;
+    public static final int accessibility_custom_action_30=0x7f050019;
+    public static final int accessibility_custom_action_31=0x7f05001a;
+    public static final int accessibility_custom_action_4=0x7f05001b;
+    public static final int accessibility_custom_action_5=0x7f05001c;
+    public static final int accessibility_custom_action_6=0x7f05001d;
+    public static final int accessibility_custom_action_7=0x7f05001e;
+    public static final int accessibility_custom_action_8=0x7f05001f;
+    public static final int accessibility_custom_action_9=0x7f050020;
+    public static final int action_container=0x7f050021;
+    public static final int action_divider=0x7f050022;
+    public static final int action_image=0x7f050023;
+    public static final int action_text=0x7f050024;
+    public static final int actions=0x7f050025;
+    public static final int androidx_compose_ui_view_composition_context=0x7f050026;
+    public static final int async=0x7f050027;
+    public static final int binding_reference=0x7f050028;
+    public static final int blocking=0x7f050029;
+    public static final int chronometer=0x7f05002a;
+    public static final int compose_view_saveable_id_tag=0x7f05002b;
+    public static final int consume_window_insets_tag=0x7f05002c;
+    public static final int dialog_button=0x7f05002d;
+    public static final int edit_text_id=0x7f05002e;
+    public static final int forever=0x7f05002f;
+    public static final int hide_ime_id=0x7f050030;
+    public static final int hide_in_inspector_tag=0x7f050031;
+    public static final int icon=0x7f050032;
+    public static final int icon_group=0x7f050033;
+    public static final int info=0x7f050034;
+    public static final int inspection_slot_table_set=0x7f050035;
+    public static final int italic=0x7f050036;
+    public static final int line1=0x7f050037;
+    public static final int line3=0x7f050038;
+    public static final int normal=0x7f050039;
+    public static final int notification_background=0x7f05003a;
+    public static final int notification_main_column=0x7f05003b;
+    public static final int notification_main_column_container=0x7f05003c;
+    public static final int report_drawn=0x7f05003d;
+    public static final int right_icon=0x7f05003e;
+    public static final int right_side=0x7f05003f;
+    public static final int tag_accessibility_actions=0x7f050040;
+    public static final int tag_accessibility_clickable_spans=0x7f050041;
+    public static final int tag_accessibility_heading=0x7f050042;
+    public static final int tag_accessibility_pane_title=0x7f050043;
+    public static final int tag_on_apply_window_listener=0x7f050044;
+    public static final int tag_on_receive_content_listener=0x7f050045;
+    public static final int tag_on_receive_content_mime_types=0x7f050046;
+    public static final int tag_screen_reader_focusable=0x7f050047;
+    public static final int tag_state_description=0x7f050048;
+    public static final int tag_transition_group=0x7f050049;
+    public static final int tag_unhandled_key_event_manager=0x7f05004a;
+    public static final int tag_unhandled_key_listeners=0x7f05004b;
+    public static final int tag_window_insets_animation_callback=0x7f05004c;
+    public static final int text=0x7f05004d;
+    public static final int text2=0x7f05004e;
+    public static final int time=0x7f05004f;
+    public static final int title=0x7f050050;
+    public static final int view_tree_lifecycle_owner=0x7f050051;
+    public static final int view_tree_on_back_pressed_dispatcher_owner=0x7f050052;
+    public static final int view_tree_saved_state_registry_owner=0x7f050053;
+    public static final int view_tree_view_model_store_owner=0x7f050054;
+    public static final int wrapped_composition_tag=0x7f050055;
   }
   public static final class integer {
-    public static final int google_play_services_version=0x7f090000;
-    public static final int status_bar_notification_info_maxnum=0x7f090001;
+    public static final int status_bar_notification_info_maxnum=0x7f060000;
   }
   public static final class layout {
-    public static final int browser_actions_context_menu_page=0x7f0a0000;
-    public static final int browser_actions_context_menu_row=0x7f0a0001;
-    public static final int custom_dialog=0x7f0a0002;
-    public static final int notification_action=0x7f0a0003;
-    public static final int notification_action_tombstone=0x7f0a0004;
-    public static final int notification_template_custom_big=0x7f0a0005;
-    public static final int notification_template_icon_group=0x7f0a0006;
-    public static final int notification_template_part_chronometer=0x7f0a0007;
-    public static final int notification_template_part_time=0x7f0a0008;
-  }
-  public static final class raw {
-    public static final int firebase_common_keep=0x7f0b0000;
+    public static final int custom_dialog=0x7f070000;
+    public static final int ime_base_split_test_activity=0x7f070001;
+    public static final int ime_secondary_split_test_activity=0x7f070002;
+    public static final int notification_action=0x7f070003;
+    public static final int notification_action_tombstone=0x7f070004;
+    public static final int notification_template_custom_big=0x7f070005;
+    public static final int notification_template_icon_group=0x7f070006;
+    public static final int notification_template_part_chronometer=0x7f070007;
+    public static final int notification_template_part_time=0x7f070008;
   }
   public static final class string {
-    public static final int common_google_play_services_enable_button=0x7f0c0000;
-    public static final int common_google_play_services_enable_text=0x7f0c0001;
-    public static final int common_google_play_services_enable_title=0x7f0c0002;
-    public static final int common_google_play_services_install_button=0x7f0c0003;
-    public static final int common_google_play_services_install_text=0x7f0c0004;
-    public static final int common_google_play_services_install_title=0x7f0c0005;
-    public static final int common_google_play_services_notification_channel_name=0x7f0c0006;
-    public static final int common_google_play_services_notification_ticker=0x7f0c0007;
-    public static final int common_google_play_services_unknown_issue=0x7f0c0008;
-    public static final int common_google_play_services_unsupported_text=0x7f0c0009;
-    public static final int common_google_play_services_update_button=0x7f0c000a;
-    public static final int common_google_play_services_update_text=0x7f0c000b;
-    public static final int common_google_play_services_update_title=0x7f0c000c;
-    public static final int common_google_play_services_updating_text=0x7f0c000d;
-    public static final int common_google_play_services_wear_update_text=0x7f0c000e;
-    public static final int common_open_on_phone=0x7f0c000f;
-    public static final int common_signin_button_text=0x7f0c0010;
-    public static final int common_signin_button_text_long=0x7f0c0011;
-    public static final int copy_toast_msg=0x7f0c0012;
-    public static final int fallback_menu_item_copy_link=0x7f0c0013;
-    public static final int fallback_menu_item_open_in_browser=0x7f0c0014;
-    public static final int fallback_menu_item_share_link=0x7f0c0015;
-    public static final int offline_notification_text=0x7f0c0016;
-    public static final int offline_notification_title=0x7f0c0017;
-    public static final int offline_opt_in_confirm=0x7f0c0018;
-    public static final int offline_opt_in_confirmation=0x7f0c0019;
-    public static final int offline_opt_in_decline=0x7f0c001a;
-    public static final int offline_opt_in_message=0x7f0c001b;
-    public static final int offline_opt_in_title=0x7f0c001c;
-    public static final int s1=0x7f0c001d;
-    public static final int s2=0x7f0c001e;
-    public static final int s3=0x7f0c001f;
-    public static final int s4=0x7f0c0020;
-    public static final int s5=0x7f0c0021;
-    public static final int s6=0x7f0c0022;
-    public static final int s7=0x7f0c0023;
-    public static final int status_bar_notification_info_overflow=0x7f0c0024;
+    public static final int androidx_startup=0x7f080000;
+    public static final int call_notification_answer_action=0x7f080001;
+    public static final int call_notification_answer_video_action=0x7f080002;
+    public static final int call_notification_decline_action=0x7f080003;
+    public static final int call_notification_hang_up_action=0x7f080004;
+    public static final int call_notification_incoming_text=0x7f080005;
+    public static final int call_notification_ongoing_text=0x7f080006;
+    public static final int call_notification_screening_text=0x7f080007;
+    public static final int close_drawer=0x7f080008;
+    public static final int close_sheet=0x7f080009;
+    public static final int default_error_message=0x7f08000a;
+    public static final int default_popup_window_title=0x7f08000b;
+    public static final int dropdown_menu=0x7f08000c;
+    public static final int in_progress=0x7f08000d;
+    public static final int indeterminate=0x7f08000e;
+    public static final int navigation_menu=0x7f08000f;
+    public static final int not_selected=0x7f080010;
+    public static final int off=0x7f080011;
+    public static final int on=0x7f080012;
+    public static final int range_end=0x7f080013;
+    public static final int range_start=0x7f080014;
+    public static final int selected=0x7f080015;
+    public static final int status_bar_notification_info_overflow=0x7f080016;
+    public static final int switch_role=0x7f080017;
+    public static final int tab=0x7f080018;
+    public static final int template_percent=0x7f080019;
   }
   public static final class style {
-    public static final int LightTheme=0x7f0d0000;
-    public static final int LowerCaseMenu=0x7f0d0001;
-    public static final int TextAppearance_Compat_Notification=0x7f0d0002;
-    public static final int TextAppearance_Compat_Notification_Info=0x7f0d0003;
-    public static final int TextAppearance_Compat_Notification_Line2=0x7f0d0004;
-    public static final int TextAppearance_Compat_Notification_Time=0x7f0d0005;
-    public static final int TextAppearance_Compat_Notification_Title=0x7f0d0006;
-    public static final int Theme_IAPTheme=0x7f0d0007;
-    public static final int Widget_Compat_NotificationActionContainer=0x7f0d0008;
-    public static final int Widget_Compat_NotificationActionText=0x7f0d0009;
+    public static final int DialogWindowTheme=0x7f090000;
+    public static final int FloatingDialogTheme=0x7f090001;
+    public static final int FloatingDialogWindowTheme=0x7f090002;
+    public static final int LightTheme=0x7f090003;
+    public static final int LowerCaseMenu=0x7f090004;
+    public static final int TextAppearance_Compat_Notification=0x7f090005;
+    public static final int TextAppearance_Compat_Notification_Info=0x7f090006;
+    public static final int TextAppearance_Compat_Notification_Line2=0x7f090007;
+    public static final int TextAppearance_Compat_Notification_Time=0x7f090008;
+    public static final int TextAppearance_Compat_Notification_Title=0x7f090009;
+    public static final int Widget_Compat_NotificationActionContainer=0x7f09000a;
+    public static final int Widget_Compat_NotificationActionText=0x7f09000b;
   }
   public static final class styleable {
-    /**
-     * Attributes that can be used with a AdsAttrs.
-     * <p>Includes the following attributes:</p>
-     * <table>
-     * <colgroup align="left" />
-     * <colgroup align="left" />
-     * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #AdsAttrs_adSize scan.aps.uvigo:adSize}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AdsAttrs_adSizes scan.aps.uvigo:adSizes}</code></td><td></td></tr>
-     * <tr><td><code>{@link #AdsAttrs_adUnitId scan.aps.uvigo:adUnitId}</code></td><td></td></tr>
-     * </table>
-     * @see #AdsAttrs_adSize
-     * @see #AdsAttrs_adSizes
-     * @see #AdsAttrs_adUnitId
-     */
-    public static final int[] AdsAttrs={
-      0x7f030000, 0x7f030001, 0x7f030002
-    };
-    /**
-     * <p>This symbol is the offset where the {@link scan.aps.uvigo.R.attr#adSize}
-     * attribute's value can be found in the {@link #AdsAttrs} array.
-     *
-     * <p>May be a string value, using '\\;' to escape characters such as
-     * '\\n' or '\\uxxxx' for a unicode character;
-     *
-     * @attr name scan.aps.uvigo:adSize
-     */
-    public static final int AdsAttrs_adSize=0;
-    /**
-     * <p>This symbol is the offset where the {@link scan.aps.uvigo.R.attr#adSizes}
-     * attribute's value can be found in the {@link #AdsAttrs} array.
-     *
-     * <p>May be a string value, using '\\;' to escape characters such as
-     * '\\n' or '\\uxxxx' for a unicode character;
-     *
-     * @attr name scan.aps.uvigo:adSizes
-     */
-    public static final int AdsAttrs_adSizes=1;
-    /**
-     * <p>This symbol is the offset where the {@link scan.aps.uvigo.R.attr#adUnitId}
-     * attribute's value can be found in the {@link #AdsAttrs} array.
-     *
-     * <p>May be a string value, using '\\;' to escape characters such as
-     * '\\n' or '\\uxxxx' for a unicode character;
-     *
-     * @attr name scan.aps.uvigo:adUnitId
-     */
-    public static final int AdsAttrs_adUnitId=2;
     /**
      * Attributes that can be used with a Capability.
      * <p>Includes the following attributes:</p>
@@ -531,17 +337,17 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #Capability_queryPatterns scan.aps.uvigo:queryPatterns}</code></td><td></td></tr>
-     * <tr><td><code>{@link #Capability_shortcutMatchRequired scan.aps.uvigo:shortcutMatchRequired}</code></td><td></td></tr>
+     * <tr><td><code>{@link #Capability_queryPatterns indoorgeolocation.aps.uvigo:queryPatterns}</code></td><td></td></tr>
+     * <tr><td><code>{@link #Capability_shortcutMatchRequired indoorgeolocation.aps.uvigo:shortcutMatchRequired}</code></td><td></td></tr>
      * </table>
      * @see #Capability_queryPatterns
      * @see #Capability_shortcutMatchRequired
      */
     public static final int[] Capability={
-      0x7f030016, 0x7f030018
+      0x7f01000e, 0x7f01000f
     };
     /**
-     * <p>This symbol is the offset where the {@link scan.aps.uvigo.R.attr#queryPatterns}
+     * <p>This symbol is the offset where the {@link indoorgeolocation.aps.uvigo.R.attr#queryPatterns}
      * attribute's value can be found in the {@link #Capability} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -549,17 +355,17 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name scan.aps.uvigo:queryPatterns
+     * @attr name indoorgeolocation.aps.uvigo:queryPatterns
      */
     public static final int Capability_queryPatterns=0;
     /**
-     * <p>This symbol is the offset where the {@link scan.aps.uvigo.R.attr#shortcutMatchRequired}
+     * <p>This symbol is the offset where the {@link indoorgeolocation.aps.uvigo.R.attr#shortcutMatchRequired}
      * attribute's value can be found in the {@link #Capability} array.
      *
      * <p>May be a boolean value, such as "<code>true</code>" or
      * "<code>false</code>".
      *
-     * @attr name scan.aps.uvigo:shortcutMatchRequired
+     * @attr name indoorgeolocation.aps.uvigo:shortcutMatchRequired
      */
     public static final int Capability_shortcutMatchRequired=1;
     /**
@@ -572,8 +378,8 @@ public final class R {
      * <tr><td><code>{@link #ColorStateListItem_android_color android:color}</code></td><td></td></tr>
      * <tr><td><code>{@link #ColorStateListItem_android_alpha android:alpha}</code></td><td></td></tr>
      * <tr><td><code>{@link #ColorStateListItem_android_lStar android:lStar}</code></td><td></td></tr>
-     * <tr><td><code>{@link #ColorStateListItem_alpha scan.aps.uvigo:alpha}</code></td><td></td></tr>
-     * <tr><td><code>{@link #ColorStateListItem_lStar scan.aps.uvigo:lStar}</code></td><td></td></tr>
+     * <tr><td><code>{@link #ColorStateListItem_alpha indoorgeolocation.aps.uvigo:alpha}</code></td><td></td></tr>
+     * <tr><td><code>{@link #ColorStateListItem_lStar indoorgeolocation.aps.uvigo:lStar}</code></td><td></td></tr>
      * </table>
      * @see #ColorStateListItem_android_color
      * @see #ColorStateListItem_android_alpha
@@ -582,8 +388,8 @@ public final class R {
      * @see #ColorStateListItem_lStar
      */
     public static final int[] ColorStateListItem={
-      0x010101a5, 0x0101031f, 0x01010647, 0x7f030003, 
-      0x7f030014
+      0x010101a5, 0x0101031f, 0x01010647, 0x7f010000, 
+      0x7f01000c
     };
     /**
      * <p>This symbol is the offset where the {@link android.R.attr#color}
@@ -615,21 +421,21 @@ public final class R {
      */
     public static final int ColorStateListItem_android_lStar=2;
     /**
-     * <p>This symbol is the offset where the {@link scan.aps.uvigo.R.attr#alpha}
+     * <p>This symbol is the offset where the {@link indoorgeolocation.aps.uvigo.R.attr#alpha}
      * attribute's value can be found in the {@link #ColorStateListItem} array.
      *
      * <p>May be a floating point value, such as "<code>1.2</code>".
      *
-     * @attr name scan.aps.uvigo:alpha
+     * @attr name indoorgeolocation.aps.uvigo:alpha
      */
     public static final int ColorStateListItem_alpha=3;
     /**
-     * <p>This symbol is the offset where the {@link scan.aps.uvigo.R.attr#lStar}
+     * <p>This symbol is the offset where the {@link indoorgeolocation.aps.uvigo.R.attr#lStar}
      * attribute's value can be found in the {@link #ColorStateListItem} array.
      *
      * <p>May be a floating point value, such as "<code>1.2</code>".
      *
-     * @attr name scan.aps.uvigo:lStar
+     * @attr name indoorgeolocation.aps.uvigo:lStar
      */
     public static final int ColorStateListItem_lStar=4;
     /**
@@ -639,13 +445,13 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #FontFamily_fontProviderAuthority scan.aps.uvigo:fontProviderAuthority}</code></td><td></td></tr>
-     * <tr><td><code>{@link #FontFamily_fontProviderCerts scan.aps.uvigo:fontProviderCerts}</code></td><td></td></tr>
-     * <tr><td><code>{@link #FontFamily_fontProviderFetchStrategy scan.aps.uvigo:fontProviderFetchStrategy}</code></td><td></td></tr>
-     * <tr><td><code>{@link #FontFamily_fontProviderFetchTimeout scan.aps.uvigo:fontProviderFetchTimeout}</code></td><td></td></tr>
-     * <tr><td><code>{@link #FontFamily_fontProviderPackage scan.aps.uvigo:fontProviderPackage}</code></td><td></td></tr>
-     * <tr><td><code>{@link #FontFamily_fontProviderQuery scan.aps.uvigo:fontProviderQuery}</code></td><td></td></tr>
-     * <tr><td><code>{@link #FontFamily_fontProviderSystemFontFamily scan.aps.uvigo:fontProviderSystemFontFamily}</code></td><td></td></tr>
+     * <tr><td><code>{@link #FontFamily_fontProviderAuthority indoorgeolocation.aps.uvigo:fontProviderAuthority}</code></td><td></td></tr>
+     * <tr><td><code>{@link #FontFamily_fontProviderCerts indoorgeolocation.aps.uvigo:fontProviderCerts}</code></td><td></td></tr>
+     * <tr><td><code>{@link #FontFamily_fontProviderFetchStrategy indoorgeolocation.aps.uvigo:fontProviderFetchStrategy}</code></td><td></td></tr>
+     * <tr><td><code>{@link #FontFamily_fontProviderFetchTimeout indoorgeolocation.aps.uvigo:fontProviderFetchTimeout}</code></td><td></td></tr>
+     * <tr><td><code>{@link #FontFamily_fontProviderPackage indoorgeolocation.aps.uvigo:fontProviderPackage}</code></td><td></td></tr>
+     * <tr><td><code>{@link #FontFamily_fontProviderQuery indoorgeolocation.aps.uvigo:fontProviderQuery}</code></td><td></td></tr>
+     * <tr><td><code>{@link #FontFamily_fontProviderSystemFontFamily indoorgeolocation.aps.uvigo:fontProviderSystemFontFamily}</code></td><td></td></tr>
      * </table>
      * @see #FontFamily_fontProviderAuthority
      * @see #FontFamily_fontProviderCerts
@@ -656,21 +462,21 @@ public final class R {
      * @see #FontFamily_fontProviderSystemFontFamily
      */
     public static final int[] FontFamily={
-      0x7f030008, 0x7f030009, 0x7f03000a, 0x7f03000b, 
-      0x7f03000c, 0x7f03000d, 0x7f03000e
+      0x7f010002, 0x7f010003, 0x7f010004, 0x7f010005, 
+      0x7f010006, 0x7f010007, 0x7f010008
     };
     /**
-     * <p>This symbol is the offset where the {@link scan.aps.uvigo.R.attr#fontProviderAuthority}
+     * <p>This symbol is the offset where the {@link indoorgeolocation.aps.uvigo.R.attr#fontProviderAuthority}
      * attribute's value can be found in the {@link #FontFamily} array.
      *
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
      *
-     * @attr name scan.aps.uvigo:fontProviderAuthority
+     * @attr name indoorgeolocation.aps.uvigo:fontProviderAuthority
      */
     public static final int FontFamily_fontProviderAuthority=0;
     /**
-     * <p>This symbol is the offset where the {@link scan.aps.uvigo.R.attr#fontProviderCerts}
+     * <p>This symbol is the offset where the {@link indoorgeolocation.aps.uvigo.R.attr#fontProviderCerts}
      * attribute's value can be found in the {@link #FontFamily} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -678,11 +484,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name scan.aps.uvigo:fontProviderCerts
+     * @attr name indoorgeolocation.aps.uvigo:fontProviderCerts
      */
     public static final int FontFamily_fontProviderCerts=1;
     /**
-     * <p>This symbol is the offset where the {@link scan.aps.uvigo.R.attr#fontProviderFetchStrategy}
+     * <p>This symbol is the offset where the {@link indoorgeolocation.aps.uvigo.R.attr#fontProviderFetchStrategy}
      * attribute's value can be found in the {@link #FontFamily} array.
      *
      * <p>Must be one of the following constant values.</p>
@@ -703,11 +509,11 @@ public final class R {
      * default typeface will be used instead.</td></tr>
      * </table>
      *
-     * @attr name scan.aps.uvigo:fontProviderFetchStrategy
+     * @attr name indoorgeolocation.aps.uvigo:fontProviderFetchStrategy
      */
     public static final int FontFamily_fontProviderFetchStrategy=2;
     /**
-     * <p>This symbol is the offset where the {@link scan.aps.uvigo.R.attr#fontProviderFetchTimeout}
+     * <p>This symbol is the offset where the {@link indoorgeolocation.aps.uvigo.R.attr#fontProviderFetchTimeout}
      * attribute's value can be found in the {@link #FontFamily} array.
      *
      * <p>May be an integer value, such as "<code>100</code>".
@@ -721,37 +527,37 @@ public final class R {
      * timeout and wait until a reply is received from the font provider.</td></tr>
      * </table>
      *
-     * @attr name scan.aps.uvigo:fontProviderFetchTimeout
+     * @attr name indoorgeolocation.aps.uvigo:fontProviderFetchTimeout
      */
     public static final int FontFamily_fontProviderFetchTimeout=3;
     /**
-     * <p>This symbol is the offset where the {@link scan.aps.uvigo.R.attr#fontProviderPackage}
+     * <p>This symbol is the offset where the {@link indoorgeolocation.aps.uvigo.R.attr#fontProviderPackage}
      * attribute's value can be found in the {@link #FontFamily} array.
      *
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
      *
-     * @attr name scan.aps.uvigo:fontProviderPackage
+     * @attr name indoorgeolocation.aps.uvigo:fontProviderPackage
      */
     public static final int FontFamily_fontProviderPackage=4;
     /**
-     * <p>This symbol is the offset where the {@link scan.aps.uvigo.R.attr#fontProviderQuery}
+     * <p>This symbol is the offset where the {@link indoorgeolocation.aps.uvigo.R.attr#fontProviderQuery}
      * attribute's value can be found in the {@link #FontFamily} array.
      *
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
      *
-     * @attr name scan.aps.uvigo:fontProviderQuery
+     * @attr name indoorgeolocation.aps.uvigo:fontProviderQuery
      */
     public static final int FontFamily_fontProviderQuery=5;
     /**
-     * <p>This symbol is the offset where the {@link scan.aps.uvigo.R.attr#fontProviderSystemFontFamily}
+     * <p>This symbol is the offset where the {@link indoorgeolocation.aps.uvigo.R.attr#fontProviderSystemFontFamily}
      * attribute's value can be found in the {@link #FontFamily} array.
      *
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
      *
-     * @attr name scan.aps.uvigo:fontProviderSystemFontFamily
+     * @attr name indoorgeolocation.aps.uvigo:fontProviderSystemFontFamily
      */
     public static final int FontFamily_fontProviderSystemFontFamily=6;
     /**
@@ -766,11 +572,11 @@ public final class R {
      * <tr><td><code>{@link #FontFamilyFont_android_fontStyle android:fontStyle}</code></td><td></td></tr>
      * <tr><td><code>{@link #FontFamilyFont_android_ttcIndex android:ttcIndex}</code></td><td></td></tr>
      * <tr><td><code>{@link #FontFamilyFont_android_fontVariationSettings android:fontVariationSettings}</code></td><td></td></tr>
-     * <tr><td><code>{@link #FontFamilyFont_font scan.aps.uvigo:font}</code></td><td></td></tr>
-     * <tr><td><code>{@link #FontFamilyFont_fontStyle scan.aps.uvigo:fontStyle}</code></td><td></td></tr>
-     * <tr><td><code>{@link #FontFamilyFont_fontVariationSettings scan.aps.uvigo:fontVariationSettings}</code></td><td></td></tr>
-     * <tr><td><code>{@link #FontFamilyFont_fontWeight scan.aps.uvigo:fontWeight}</code></td><td></td></tr>
-     * <tr><td><code>{@link #FontFamilyFont_ttcIndex scan.aps.uvigo:ttcIndex}</code></td><td></td></tr>
+     * <tr><td><code>{@link #FontFamilyFont_font indoorgeolocation.aps.uvigo:font}</code></td><td></td></tr>
+     * <tr><td><code>{@link #FontFamilyFont_fontStyle indoorgeolocation.aps.uvigo:fontStyle}</code></td><td></td></tr>
+     * <tr><td><code>{@link #FontFamilyFont_fontVariationSettings indoorgeolocation.aps.uvigo:fontVariationSettings}</code></td><td></td></tr>
+     * <tr><td><code>{@link #FontFamilyFont_fontWeight indoorgeolocation.aps.uvigo:fontWeight}</code></td><td></td></tr>
+     * <tr><td><code>{@link #FontFamilyFont_ttcIndex indoorgeolocation.aps.uvigo:ttcIndex}</code></td><td></td></tr>
      * </table>
      * @see #FontFamilyFont_android_font
      * @see #FontFamilyFont_android_fontWeight
@@ -785,8 +591,8 @@ public final class R {
      */
     public static final int[] FontFamilyFont={
       0x01010532, 0x01010533, 0x0101053f, 0x0101056f, 
-      0x01010570, 0x7f030007, 0x7f03000f, 0x7f030010, 
-      0x7f030011, 0x7f030019
+      0x01010570, 0x7f010001, 0x7f010009, 0x7f01000a, 
+      0x7f01000b, 0x7f010010
     };
     /**
      * <p>This symbol is the offset where the {@link android.R.attr#font}
@@ -846,7 +652,7 @@ public final class R {
      */
     public static final int FontFamilyFont_android_fontVariationSettings=4;
     /**
-     * <p>This symbol is the offset where the {@link scan.aps.uvigo.R.attr#font}
+     * <p>This symbol is the offset where the {@link indoorgeolocation.aps.uvigo.R.attr#font}
      * attribute's value can be found in the {@link #FontFamilyFont} array.
      *
      * <p>May be a reference to another resource, in the form
@@ -854,11 +660,11 @@ public final class R {
      * attribute in the form
      * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
      *
-     * @attr name scan.aps.uvigo:font
+     * @attr name indoorgeolocation.aps.uvigo:font
      */
     public static final int FontFamilyFont_font=5;
     /**
-     * <p>This symbol is the offset where the {@link scan.aps.uvigo.R.attr#fontStyle}
+     * <p>This symbol is the offset where the {@link indoorgeolocation.aps.uvigo.R.attr#fontStyle}
      * attribute's value can be found in the {@link #FontFamilyFont} array.
      *
      * <p>Must be one of the following constant values.</p>
@@ -871,123 +677,37 @@ public final class R {
      * <tr><td>normal</td><td>0</td><td></td></tr>
      * </table>
      *
-     * @attr name scan.aps.uvigo:fontStyle
+     * @attr name indoorgeolocation.aps.uvigo:fontStyle
      */
     public static final int FontFamilyFont_fontStyle=6;
     /**
-     * <p>This symbol is the offset where the {@link scan.aps.uvigo.R.attr#fontVariationSettings}
+     * <p>This symbol is the offset where the {@link indoorgeolocation.aps.uvigo.R.attr#fontVariationSettings}
      * attribute's value can be found in the {@link #FontFamilyFont} array.
      *
      * <p>May be a string value, using '\\;' to escape characters such as
      * '\\n' or '\\uxxxx' for a unicode character;
      *
-     * @attr name scan.aps.uvigo:fontVariationSettings
+     * @attr name indoorgeolocation.aps.uvigo:fontVariationSettings
      */
     public static final int FontFamilyFont_fontVariationSettings=7;
     /**
-     * <p>This symbol is the offset where the {@link scan.aps.uvigo.R.attr#fontWeight}
+     * <p>This symbol is the offset where the {@link indoorgeolocation.aps.uvigo.R.attr#fontWeight}
      * attribute's value can be found in the {@link #FontFamilyFont} array.
      *
      * <p>May be an integer value, such as "<code>100</code>".
      *
-     * @attr name scan.aps.uvigo:fontWeight
+     * @attr name indoorgeolocation.aps.uvigo:fontWeight
      */
     public static final int FontFamilyFont_fontWeight=8;
     /**
-     * <p>This symbol is the offset where the {@link scan.aps.uvigo.R.attr#ttcIndex}
+     * <p>This symbol is the offset where the {@link indoorgeolocation.aps.uvigo.R.attr#ttcIndex}
      * attribute's value can be found in the {@link #FontFamilyFont} array.
      *
      * <p>May be an integer value, such as "<code>100</code>".
      *
-     * @attr name scan.aps.uvigo:ttcIndex
+     * @attr name indoorgeolocation.aps.uvigo:ttcIndex
      */
     public static final int FontFamilyFont_ttcIndex=9;
-    /**
-     * Attributes that can be used with a Fragment.
-     * <p>Includes the following attributes:</p>
-     * <table>
-     * <colgroup align="left" />
-     * <colgroup align="left" />
-     * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #Fragment_android_name android:name}</code></td><td></td></tr>
-     * <tr><td><code>{@link #Fragment_android_id android:id}</code></td><td></td></tr>
-     * <tr><td><code>{@link #Fragment_android_tag android:tag}</code></td><td></td></tr>
-     * </table>
-     * @see #Fragment_android_name
-     * @see #Fragment_android_id
-     * @see #Fragment_android_tag
-     */
-    public static final int[] Fragment={
-      0x01010003, 0x010100d0, 0x010100d1
-    };
-    /**
-     * <p>This symbol is the offset where the {@link android.R.attr#name}
-     * attribute's value can be found in the {@link #Fragment} array.
-     *
-     * <p>May be a string value, using '\\;' to escape characters such as
-     * '\\n' or '\\uxxxx' for a unicode character;
-     *
-     * @attr name android:name
-     */
-    public static final int Fragment_android_name=0;
-    /**
-     * <p>This symbol is the offset where the {@link android.R.attr#id}
-     * attribute's value can be found in the {@link #Fragment} array.
-     *
-     * <p>May be a reference to another resource, in the form
-     * "<code>@[+][<i>package</i>:]<i>type</i>/<i>name</i></code>" or a theme
-     * attribute in the form
-     * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
-     *
-     * @attr name android:id
-     */
-    public static final int Fragment_android_id=1;
-    /**
-     * <p>This symbol is the offset where the {@link android.R.attr#tag}
-     * attribute's value can be found in the {@link #Fragment} array.
-     *
-     * <p>May be a string value, using '\\;' to escape characters such as
-     * '\\n' or '\\uxxxx' for a unicode character;
-     *
-     * @attr name android:tag
-     */
-    public static final int Fragment_android_tag=2;
-    /**
-     * Attributes that can be used with a FragmentContainerView.
-     * <p>Includes the following attributes:</p>
-     * <table>
-     * <colgroup align="left" />
-     * <colgroup align="left" />
-     * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #FragmentContainerView_android_name android:name}</code></td><td></td></tr>
-     * <tr><td><code>{@link #FragmentContainerView_android_tag android:tag}</code></td><td></td></tr>
-     * </table>
-     * @see #FragmentContainerView_android_name
-     * @see #FragmentContainerView_android_tag
-     */
-    public static final int[] FragmentContainerView={
-      0x01010003, 0x010100d1
-    };
-    /**
-     * <p>This symbol is the offset where the {@link android.R.attr#name}
-     * attribute's value can be found in the {@link #FragmentContainerView} array.
-     *
-     * <p>May be a string value, using '\\;' to escape characters such as
-     * '\\n' or '\\uxxxx' for a unicode character;
-     *
-     * @attr name android:name
-     */
-    public static final int FragmentContainerView_android_name=0;
-    /**
-     * <p>This symbol is the offset where the {@link android.R.attr#tag}
-     * attribute's value can be found in the {@link #FragmentContainerView} array.
-     *
-     * <p>May be a string value, using '\\;' to escape characters such as
-     * '\\n' or '\\uxxxx' for a unicode character;
-     *
-     * @attr name android:tag
-     */
-    public static final int FragmentContainerView_android_tag=1;
     /**
      * Attributes that can be used with a GradientColor.
      * <p>Includes the following attributes:</p>
@@ -1212,139 +932,5 @@ public final class R {
      * @attr name android:offset
      */
     public static final int GradientColorItem_android_offset=1;
-    /**
-     * Attributes that can be used with a LoadingImageView.
-     * <p>Includes the following attributes:</p>
-     * <table>
-     * <colgroup align="left" />
-     * <colgroup align="left" />
-     * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #LoadingImageView_circleCrop scan.aps.uvigo:circleCrop}</code></td><td></td></tr>
-     * <tr><td><code>{@link #LoadingImageView_imageAspectRatio scan.aps.uvigo:imageAspectRatio}</code></td><td></td></tr>
-     * <tr><td><code>{@link #LoadingImageView_imageAspectRatioAdjust scan.aps.uvigo:imageAspectRatioAdjust}</code></td><td></td></tr>
-     * </table>
-     * @see #LoadingImageView_circleCrop
-     * @see #LoadingImageView_imageAspectRatio
-     * @see #LoadingImageView_imageAspectRatioAdjust
-     */
-    public static final int[] LoadingImageView={
-      0x7f030005, 0x7f030012, 0x7f030013
-    };
-    /**
-     * <p>This symbol is the offset where the {@link scan.aps.uvigo.R.attr#circleCrop}
-     * attribute's value can be found in the {@link #LoadingImageView} array.
-     *
-     * <p>May be a boolean value, such as "<code>true</code>" or
-     * "<code>false</code>".
-     *
-     * @attr name scan.aps.uvigo:circleCrop
-     */
-    public static final int LoadingImageView_circleCrop=0;
-    /**
-     * <p>This symbol is the offset where the {@link scan.aps.uvigo.R.attr#imageAspectRatio}
-     * attribute's value can be found in the {@link #LoadingImageView} array.
-     *
-     * <p>May be a floating point value, such as "<code>1.2</code>".
-     *
-     * @attr name scan.aps.uvigo:imageAspectRatio
-     */
-    public static final int LoadingImageView_imageAspectRatio=1;
-    /**
-     * <p>This symbol is the offset where the {@link scan.aps.uvigo.R.attr#imageAspectRatioAdjust}
-     * attribute's value can be found in the {@link #LoadingImageView} array.
-     *
-     * <p>Must be one of the following constant values.</p>
-     * <table>
-     * <colgroup align="left" />
-     * <colgroup align="left" />
-     * <colgroup align="left" />
-     * <tr><th>Constant</th><th>Value</th><th>Description</th></tr>
-     * <tr><td>adjust_height</td><td>2</td><td></td></tr>
-     * <tr><td>adjust_width</td><td>1</td><td></td></tr>
-     * <tr><td>none</td><td>0</td><td></td></tr>
-     * </table>
-     *
-     * @attr name scan.aps.uvigo:imageAspectRatioAdjust
-     */
-    public static final int LoadingImageView_imageAspectRatioAdjust=2;
-    /**
-     * Attributes that can be used with a SignInButton.
-     * <p>Includes the following attributes:</p>
-     * <table>
-     * <colgroup align="left" />
-     * <colgroup align="left" />
-     * <tr><th>Attribute</th><th>Description</th></tr>
-     * <tr><td><code>{@link #SignInButton_buttonSize scan.aps.uvigo:buttonSize}</code></td><td></td></tr>
-     * <tr><td><code>{@link #SignInButton_colorScheme scan.aps.uvigo:colorScheme}</code></td><td></td></tr>
-     * <tr><td><code>{@link #SignInButton_scopeUris scan.aps.uvigo:scopeUris}</code></td><td></td></tr>
-     * </table>
-     * @see #SignInButton_buttonSize
-     * @see #SignInButton_colorScheme
-     * @see #SignInButton_scopeUris
-     */
-    public static final int[] SignInButton={
-      0x7f030004, 0x7f030006, 0x7f030017
-    };
-    /**
-     * <p>This symbol is the offset where the {@link scan.aps.uvigo.R.attr#buttonSize}
-     * attribute's value can be found in the {@link #SignInButton} array.
-     *
-     * <p>May be a reference to another resource, in the form
-     * "<code>@[+][<i>package</i>:]<i>type</i>/<i>name</i></code>" or a theme
-     * attribute in the form
-     * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
-     * <p>Must be one of the following constant values.</p>
-     * <table>
-     * <colgroup align="left" />
-     * <colgroup align="left" />
-     * <colgroup align="left" />
-     * <tr><th>Constant</th><th>Value</th><th>Description</th></tr>
-     * <tr><td>icon_only</td><td>2</td><td></td></tr>
-     * <tr><td>standard</td><td>0</td><td></td></tr>
-     * <tr><td>wide</td><td>1</td><td></td></tr>
-     * </table>
-     *
-     * @attr name scan.aps.uvigo:buttonSize
-     */
-    public static final int SignInButton_buttonSize=0;
-    /**
-     * <p>This symbol is the offset where the {@link scan.aps.uvigo.R.attr#colorScheme}
-     * attribute's value can be found in the {@link #SignInButton} array.
-     *
-     * <p>May be a reference to another resource, in the form
-     * "<code>@[+][<i>package</i>:]<i>type</i>/<i>name</i></code>" or a theme
-     * attribute in the form
-     * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
-     * <p>Must be one of the following constant values.</p>
-     * <table>
-     * <colgroup align="left" />
-     * <colgroup align="left" />
-     * <colgroup align="left" />
-     * <tr><th>Constant</th><th>Value</th><th>Description</th></tr>
-     * <tr><td>auto</td><td>2</td><td></td></tr>
-     * <tr><td>dark</td><td>0</td><td></td></tr>
-     * <tr><td>light</td><td>1</td><td></td></tr>
-     * </table>
-     *
-     * @attr name scan.aps.uvigo:colorScheme
-     */
-    public static final int SignInButton_colorScheme=1;
-    /**
-     * <p>This symbol is the offset where the {@link scan.aps.uvigo.R.attr#scopeUris}
-     * attribute's value can be found in the {@link #SignInButton} array.
-     *
-     * <p>May be a reference to another resource, in the form
-     * "<code>@[+][<i>package</i>:]<i>type</i>/<i>name</i></code>" or a theme
-     * attribute in the form
-     * "<code>?[<i>package</i>:]<i>type</i>/<i>name</i></code>".
-     * <p>May be a string value, using '\\;' to escape characters such as
-     * '\\n' or '\\uxxxx' for a unicode character;
-     *
-     * @attr name scan.aps.uvigo:scopeUris
-     */
-    public static final int SignInButton_scopeUris=2;
-  }
-  public static final class xml {
-    public static final int image_share_filepaths=0x7f0f0000;
   }
 }

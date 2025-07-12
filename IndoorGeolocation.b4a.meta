@@ -2,8 +2,8 @@
 ModuleBookmarks1=
 ModuleBreakpoints0=
 ModuleBreakpoints1=
-ModuleClosedNodes0=21
+ModuleClosedNodes0=22
 ModuleClosedNodes1=1
-NavigationStack=Diseñador Visual,LytMain.bal,-100,6,Main,setStateScan,110,0,Main,btnScan_Click,235,0,Main,ConvertToJSON,160,0,Main,TWifiScanToMap,150,0,Main,SaveTRegistroToMap,125,1,Main,btnConfig_Click,272,0,Main,tmrAutoScan_Tick,286,0,Main,scanAP,259,0,Main,wifi_ScanDone,181,6,Main,Process_Globals,20,0
+NavigationStack=Main,topicLocation,337,0,Main,topicRegistroResult,331,0,Main,wifi_ScanDone,224,0,Main,connect_MQTT,367,0,Main,scanAP,252,6,Diseñador Visual,LytMain.bal,-100,6,Main,clientMQTT_Disconnected,412,0,Main,clientMQTT_MessageArrived,448,6,Main,ConvertirTimestamp,412,6,Main,clientMQTT_Connected,404,1
 SelectedBuild=0
 VisibleModules=1

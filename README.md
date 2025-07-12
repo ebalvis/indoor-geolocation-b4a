@@ -90,3 +90,13 @@ This project is built using:
     }
   ]
 }
+
+---
+
+## 🔄 Cambios en la última versión
+
+- Se añade control automático del permiso y activación del GPS.
+- Se amplía el formato del mensaje JSON con información del dispositivo y marca temporal.
+- Se introduce cálculo de distancia estimada basada en RSSI.
+- Se añaden campos extendidos para redes WiFi (data_0 a data_9).
+- Se refactoriza y reestructura el código para mejorar mantenibilidad y preparar futuras funcionalidades.

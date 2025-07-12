@@ -14,18 +14,18 @@ FileGroup5=Default Group
 FileGroup6=Default Group
 FileGroup7=Default Group
 Group=Default Group
-Library1=b4xpreferencesdialog
-Library10=ultimatelistview
-Library11=xui
-Library12=animationplus
-Library2=core
-Library3=jmqtt
-Library4=json
-Library5=mlwifi400
-Library6=permissionsmanager
-Library7=phone
-Library8=randomaccessfile
-Library9=reflection
+Library1=animationplus
+Library10=reflection
+Library11=ultimatelistview
+Library12=xui
+Library2=b4xpreferencesdialog
+Library3=core
+Library4=jmqtt
+Library5=json
+Library6=mlwifi400
+Library7=permissionsmanager
+Library8=phone
+Library9=randomaccessfile
 ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="5" android:targetSdkVersion="33"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.LightTheme)~\n~'End of default text.~\n~AddApplicationText(~\n~    <meta-data android:name="Eduardo Balvis"  android:value="Tu Nombre o Empresa"/>~\n~    <meta-data android:name="ebalvis@uvigo.gal" android:value="tu.email@dominio.com"/>~\n~    <meta-data android:name="developer_website" android:value="https://tusitio.com"/>~\n~)~\n~AddApplicationText(<activity android:name="aps.uvigo.objects.preferenceactivity"/>)~\n~'AddApplicationText(<activity android:name="anywheresoftware.b4a.objects.preferenceactivity"/>)~\n~~\n~AddPermission(android.permission.ACCESS_COARSE_LOCATION)~\n~AddPermission(android.permission.ACCESS_FINE_LOCATION)~\n~AddPermission(android.permission.ACCESS_WIFI_STATE)~\n~~\n~
 Module1=Starter
 NumberOfFiles=7
@@ -35,7 +35,7 @@ Version=13.3
 @EndOfDesignText@
 #Region  Project Attributes 
 	#ApplicationLabel: IndoorGeolocation
-	#VersionCode: 1
+	#VersionCode: 2
 	#VersionName: 
 	'SupportedOrientations possible values: unspecified, landscape or portrait.
 	#SupportedOrientations: portrait
@@ -271,8 +271,10 @@ Sub btnScan_Click
 End Sub
 
 Sub scanAP
-	lblInfo.Visible=False
-	If Not(connectedMQTT) Then
+	If Config1.Get("keyAutoFind")=False Then
+		lblInfo.Visible=False
+	End If
+	If Not(client.Connected ) Then
 		ToastMessageShow("No conectado al servidor MQTT.",False)
 	Else
 		If Not (WifiObject.isWifiEnabled) Then
@@ -367,13 +369,17 @@ End Sub
 Sub topicRegistroResult As String
 	Return getTopic(False,True)
 End Sub
+
 Sub topicLocation As String
 	Return getTopic(True,False)
 End Sub
+
 Sub topicLocationResult As String
 	Return getTopic(True,True)
 End Sub
+
 Sub connect_MQTT
+	If connectedMQTT Then Return 
 	Try
 		If  Config1.Get("keySSL") Then
 			Dim serverURI As String = "ssl://" & Config1.Get("keyHostMQTT") & ":" & Config1.Get("keyPortMQTT")
@@ -417,11 +423,11 @@ Private Sub clientMQTT_Connected (Success As Boolean)
 		If client.Connected Then
 			If Config1.Get("keyAutoFind") Then
 				client.Subscribe(topicLocationResult, 0)
+				Log(topicLocationResult)
 				scanAP
 			Else
 				client.Subscribe(topicRegistroResult, 0)
 			End If
-			client.Subscribe("indoor_geolocation/registro/result", 0)
 		Else
 			ToastMessageShow("Conexión MQTT no activa" , False)
 		End If
@@ -439,6 +445,11 @@ Private Sub clientMQTT_Disconnected
 	setStateMQTT
 	'ToastMessageShow("Desonectado MQTT" , False)
 End Sub
+Sub ConvertirTimestamp(dt As Long) As String
+	DateTime.DateFormat="dd/MM/yy"
+	DateTime.TimeFormat="HH:ss:ss"
+	Return DateTime.Date(dt) & " " & DateTime.Time(dt)
+End Sub
 
 Private Sub clientMQTT_MessageArrived (Topic As String, Payload() As Byte)
 	Dim datos As String = conv.StringFromBytes(Payload,"UTF8")
@@ -446,11 +457,52 @@ Private Sub clientMQTT_MessageArrived (Topic As String, Payload() As Byte)
 	Dim parser As JSONParser
 	parser.Initialize(datos)
 	Try
-		' Convertir la cadena JSON a un Map 
+		' Convertir la cadena JSON a un Map
 		Dim dataMap As Map
 		dataMap = parser.NextObject
-		lblInfo.Text="ID Registro: "&dataMap.Get("last_id")&CRLF&"Insertados: "&dataMap.Get("affectedRows")
-		lblInfo.Visible=True
+		If Topic.Contains("location") Then
+			'lblInfo.Typeface=Typeface.MATERIALICONS
+			Dim zona As String=dataMap.Get("zona_estimada")
+			Dim cs As CSBuilder
+			cs.Initialize
+			' Icono Nivel
+			cs.Typeface(Typeface.MATERIALICONS).Append(Chr(0xE88A)).PopAll
+			cs.Append(" NIVEL: ").PopAll
+			cs.Color(Colors.Blue).Append(dataMap.Get("nivel")).PopAll
+			cs.Append(CRLF)
+			' Icono Zona
+			cs.Typeface(Typeface.MATERIALICONS).Append(Chr(0xE55A)).PopAll
+			cs.Append(" ZONA ESTIMADA: ").PopAll
+			cs.Color(Colors.Blue).Append(zona.ToUpperCase).PopAll
+			cs.Append(CRLF)
+			' Icono Coordenadas
+			cs.Typeface(Typeface.MATERIALICONS).Append(Chr(0xE55C)).PopAll
+			cs.Append(" COORDENADAS:").PopAll
+			cs.Append(CRLF & TAB)
+			' Sub-icono y coordenada X con color
+			cs.Append("→ X: ").PopAll
+			cs.Color(Colors.Blue).Append(dataMap.Get("x")).PopAll
+			cs.Append(CRLF & TAB)
+			' Coordenada Y con color
+			cs.Append("→ Y: ").PopAll
+			cs.Color(Colors.Blue).Append(dataMap.Get("y")).PopAll
+			cs.Append(CRLF)
+			' 🕒 Fecha y hora con icono de reloj
+			cs.Typeface(Typeface.MATERIALICONS).Append(Chr(0xE192)).PopAll
+			cs.Append(" FECHA HORA: ").PopAll
+			cs.Color(Colors.Blue).Append(ConvertirTimestamp(dataMap.Get("timestamp"))).PopAll
+			' Asigna al Label
+			lblInfo.Text = cs
+			'lblInfo.Text=" ZONA ESTIMADA: "&CRLF&zona.ToUpperCase&CRLF&" NIVEL: "&dataMap.Get("nivel")&CRLF&" COORDENADAS:"&CRLF&TAB& Chr(0xF0B2) &  " X: "&dataMap.Get("x")&CRLF&TAB&" Y: "&dataMap.Get("y")
+			lblInfo.Height=150dip
+			lblInfo.Visible=True
+		Else
+			lblInfo.Typeface=Typeface.DEFAULT
+			lblInfo.Text="ID Registro: "&dataMap.Get("last_id")&CRLF&"Insertados: "&dataMap.Get("affectedRows")
+			lblInfo.Height=50dip
+			lblInfo.Visible=True
+		End If
+
 	Catch
 		ToastMessageShow(datos,True)
 	End Try
@@ -515,15 +567,22 @@ End Sub
 #End Region
 
 Sub CheckAndRequestPermissions
+	Dim sdkVersion As Int = phone.SdkVersion
+	pmanager.ApplicationResumeAllowed = False
+	
 	pmanager.ApplicationResumeAllowed=False
-	For Each permission As String In pmanager.AllPermissionsInManifestFile
-		pmanager.CheckAndRequestPermission(permission)
-		Wait For Activity_PermissionResult (permission As String, Result As Boolean)
-		If Result=False Then
-			ToastMessageShow("Sin permisos "&permission, False)
-			Log("Sin permisos "&permission)
-		End If
-	Next
+	If sdkVersion >= 23 Then
+		For Each permission As String In pmanager.AllPermissionsInManifestFile
+			pmanager.CheckAndRequestPermission(permission)
+			Wait For Activity_PermissionResult (permission As String, Result As Boolean)
+			If Result=False Then
+				ToastMessageShow("Sin permisos "&permission, False)
+				Log("Sin permisos "&permission)
+			End If
+		Next
+	Else
+		Log("Versión de Android anterior a 6.0 - permisos concedidos en tiempo de instalación.")
+	End If
 	pmanager.ApplicationResumeAllowed=True 'Stop preventing Application to resume.
 End Sub
 

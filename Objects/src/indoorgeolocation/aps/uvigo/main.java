@@ -541,7 +541,7 @@ return;
 case 0:
 //C
 this.state = 1;
- //BA.debugLineNum = 270;BA.debugLine="If connectedMQTT Then client.Close";
+ //BA.debugLineNum = 272;BA.debugLine="If connectedMQTT Then client.Close";
 if (true) break;
 
 case 1:
@@ -561,13 +561,13 @@ case 6:
 //C
 this.state = 7;
 ;
- //BA.debugLineNum = 271;BA.debugLine="LoadConfig";
+ //BA.debugLineNum = 273;BA.debugLine="LoadConfig";
 _loadconfig();
- //BA.debugLineNum = 272;BA.debugLine="tmrMQTTReconnect.Enabled=False";
+ //BA.debugLineNum = 274;BA.debugLine="tmrMQTTReconnect.Enabled=False";
 parent.mostCurrent._tmrmqttreconnect.setEnabled(anywheresoftware.b4a.keywords.Common.False);
- //BA.debugLineNum = 273;BA.debugLine="tmrAutoScan.Enabled=False";
+ //BA.debugLineNum = 275;BA.debugLine="tmrAutoScan.Enabled=False";
 parent.mostCurrent._tmrautoscan.setEnabled(anywheresoftware.b4a.keywords.Common.False);
- //BA.debugLineNum = 274;BA.debugLine="Wait For (prefdialog.ShowDialog(Config1, \"OK\", \"C";
+ //BA.debugLineNum = 276;BA.debugLine="Wait For (prefdialog.ShowDialog(Config1, \"OK\", \"C";
 anywheresoftware.b4a.keywords.Common.WaitFor("complete", processBA, this, parent.mostCurrent._prefdialog._showdialog /*anywheresoftware.b4a.keywords.Common.ResumableSubWrapper*/ (parent._config1,(Object)("OK"),(Object)("CANCELAR")));
 this.state = 11;
 return;
@@ -576,7 +576,7 @@ case 11:
 this.state = 7;
 _result = (Integer) result[0];
 ;
- //BA.debugLineNum = 275;BA.debugLine="If Result = xui.DialogResponse_Positive Then";
+ //BA.debugLineNum = 277;BA.debugLine="If Result = xui.DialogResponse_Positive Then";
 if (true) break;
 
 case 7:
@@ -589,11 +589,11 @@ this.state = 9;
 case 9:
 //C
 this.state = 10;
- //BA.debugLineNum = 276;BA.debugLine="SaveConfig(Config1)";
+ //BA.debugLineNum = 278;BA.debugLine="SaveConfig(Config1)";
 _saveconfig(parent._config1);
- //BA.debugLineNum = 277;BA.debugLine="btnScan.Enabled=Not(Config1.Get(\"keyAutoFind\"))";
+ //BA.debugLineNum = 279;BA.debugLine="btnScan.Enabled=Not(Config1.Get(\"keyAutoFind\"))";
 parent.mostCurrent._btnscan.setEnabled(anywheresoftware.b4a.keywords.Common.Not(BA.ObjectToBoolean(parent._config1.Get((Object)("keyAutoFind")))));
- //BA.debugLineNum = 278;BA.debugLine="lblScan.Visible=False";
+ //BA.debugLineNum = 280;BA.debugLine="lblScan.Visible=False";
 parent.mostCurrent._lblscan.setVisible(anywheresoftware.b4a.keywords.Common.False);
  if (true) break;
 
@@ -601,13 +601,13 @@ case 10:
 //C
 this.state = -1;
 ;
- //BA.debugLineNum = 280;BA.debugLine="ErroresReconectando=0";
+ //BA.debugLineNum = 282;BA.debugLine="ErroresReconectando=0";
 parent._erroresreconectando = (int) (0);
- //BA.debugLineNum = 281;BA.debugLine="counter=0";
+ //BA.debugLineNum = 283;BA.debugLine="counter=0";
 parent._counter = (int) (0);
- //BA.debugLineNum = 282;BA.debugLine="connect_MQTT";
+ //BA.debugLineNum = 284;BA.debugLine="connect_MQTT";
 _connect_mqtt();
- //BA.debugLineNum = 283;BA.debugLine="End Sub";
+ //BA.debugLineNum = 285;BA.debugLine="End Sub";
 if (true) break;
 
             }
@@ -632,11 +632,12 @@ public ResumableSub_CheckAndRequestPermissions(indoorgeolocation.aps.uvigo.main 
 this.parent = parent;
 }
 indoorgeolocation.aps.uvigo.main parent;
+int _sdkversion = 0;
 String _permission = "";
 boolean _result = false;
-anywheresoftware.b4a.BA.IterableList group2;
-int index2;
-int groupLen2;
+anywheresoftware.b4a.BA.IterableList group5;
+int index5;
+int groupLen5;
 
 @Override
 public void resume(BA ba, Object[] result) throws Exception{
@@ -649,82 +650,114 @@ return;
 case 0:
 //C
 this.state = 1;
- //BA.debugLineNum = 483;BA.debugLine="pmanager.ApplicationResumeAllowed=False";
+ //BA.debugLineNum = 535;BA.debugLine="Dim sdkVersion As Int = phone.SdkVersion";
+_sdkversion = parent._phone.getSdkVersion();
+ //BA.debugLineNum = 536;BA.debugLine="pmanager.ApplicationResumeAllowed = False";
 parent._pmanager.setApplicationResumeAllowed(anywheresoftware.b4a.keywords.Common.False);
- //BA.debugLineNum = 484;BA.debugLine="For Each permission As String In pmanager.AllPerm";
+ //BA.debugLineNum = 538;BA.debugLine="pmanager.ApplicationResumeAllowed=False";
+parent._pmanager.setApplicationResumeAllowed(anywheresoftware.b4a.keywords.Common.False);
+ //BA.debugLineNum = 539;BA.debugLine="If sdkVersion >= 23 Then";
 if (true) break;
 
 case 1:
-//for
-this.state = 8;
-group2 = parent._pmanager.getAllPermissionsInManifestFile();
-index2 = 0;
-groupLen2 = group2.getSize();
-this.state = 9;
-if (true) break;
-
-case 9:
-//C
-this.state = 8;
-if (index2 < groupLen2) {
+//if
+this.state = 14;
+if (_sdkversion>=23) { 
 this.state = 3;
-_permission = BA.ObjectToString(group2.Get(index2));}
-if (true) break;
-
-case 10:
-//C
-this.state = 9;
-index2++;
-if (true) break;
+}else {
+this.state = 13;
+}if (true) break;
 
 case 3:
 //C
 this.state = 4;
- //BA.debugLineNum = 485;BA.debugLine="pmanager.CheckAndRequestPermission(permission)";
-parent._pmanager.CheckAndRequestPermission(processBA,_permission);
- //BA.debugLineNum = 486;BA.debugLine="Wait For Activity_PermissionResult (permission A";
-anywheresoftware.b4a.keywords.Common.WaitFor("activity_permissionresult", processBA, this, null);
-this.state = 11;
-return;
-case 11:
-//C
-this.state = 4;
-_permission = (String) result[0];
-_result = (Boolean) result[1];
-;
- //BA.debugLineNum = 487;BA.debugLine="If Result=False Then";
+ //BA.debugLineNum = 540;BA.debugLine="For Each permission As String In pmanager.AllPer";
 if (true) break;
 
 case 4:
-//if
-this.state = 7;
-if (_result==anywheresoftware.b4a.keywords.Common.False) { 
+//for
+this.state = 11;
+group5 = parent._pmanager.getAllPermissionsInManifestFile();
+index5 = 0;
+groupLen5 = group5.getSize();
+this.state = 15;
+if (true) break;
+
+case 15:
+//C
+this.state = 11;
+if (index5 < groupLen5) {
 this.state = 6;
-}if (true) break;
+_permission = BA.ObjectToString(group5.Get(index5));}
+if (true) break;
+
+case 16:
+//C
+this.state = 15;
+index5++;
+if (true) break;
 
 case 6:
 //C
 this.state = 7;
- //BA.debugLineNum = 488;BA.debugLine="ToastMessageShow(\"Sin permisos \"&permission, Fa";
-anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("Sin permisos "+_permission),anywheresoftware.b4a.keywords.Common.False);
- //BA.debugLineNum = 489;BA.debugLine="Log(\"Sin permisos \"&permission)";
-anywheresoftware.b4a.keywords.Common.LogImpl("52424839","Sin permisos "+_permission,0);
- if (true) break;
+ //BA.debugLineNum = 541;BA.debugLine="pmanager.CheckAndRequestPermission(permission)";
+parent._pmanager.CheckAndRequestPermission(processBA,_permission);
+ //BA.debugLineNum = 542;BA.debugLine="Wait For Activity_PermissionResult (permission";
+anywheresoftware.b4a.keywords.Common.WaitFor("activity_permissionresult", processBA, this, null);
+this.state = 17;
+return;
+case 17:
+//C
+this.state = 7;
+_permission = (String) result[0];
+_result = (Boolean) result[1];
+;
+ //BA.debugLineNum = 543;BA.debugLine="If Result=False Then";
+if (true) break;
 
 case 7:
+//if
+this.state = 10;
+if (_result==anywheresoftware.b4a.keywords.Common.False) { 
+this.state = 9;
+}if (true) break;
+
+case 9:
 //C
 this.state = 10;
+ //BA.debugLineNum = 544;BA.debugLine="ToastMessageShow(\"Sin permisos \"&permission, F";
+anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("Sin permisos "+_permission),anywheresoftware.b4a.keywords.Common.False);
+ //BA.debugLineNum = 545;BA.debugLine="Log(\"Sin permisos \"&permission)";
+anywheresoftware.b4a.keywords.Common.LogImpl("32031627","Sin permisos "+_permission,0);
+ if (true) break;
+
+case 10:
+//C
+this.state = 16;
 ;
  if (true) break;
 if (true) break;
 
-case 8:
+case 11:
+//C
+this.state = 14;
+;
+ if (true) break;
+
+case 13:
+//C
+this.state = 14;
+ //BA.debugLineNum = 549;BA.debugLine="Log(\"Versión de Android anterior a 6.0 - permiso";
+anywheresoftware.b4a.keywords.Common.LogImpl("32031631","Versión de Android anterior a 6.0 - permisos concedidos en tiempo de instalación.",0);
+ if (true) break;
+
+case 14:
 //C
 this.state = -1;
 ;
- //BA.debugLineNum = 492;BA.debugLine="pmanager.ApplicationResumeAllowed=True 'Stop prev";
+ //BA.debugLineNum = 551;BA.debugLine="pmanager.ApplicationResumeAllowed=True 'Stop prev";
 parent._pmanager.setApplicationResumeAllowed(anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 493;BA.debugLine="End Sub";
+ //BA.debugLineNum = 552;BA.debugLine="End Sub";
 if (true) break;
 
             }
@@ -756,11 +789,11 @@ return;
 case 0:
 //C
 this.state = 1;
- //BA.debugLineNum = 377;BA.debugLine="Log($\"Conectado: ${Success}\"$)";
-anywheresoftware.b4a.keywords.Common.LogImpl("51966081",("Conectado: "+anywheresoftware.b4a.keywords.Common.SmartStringFormatter("",(Object)(_success))+""),0);
- //BA.debugLineNum = 378;BA.debugLine="connectedMQTT=Success";
+ //BA.debugLineNum = 383;BA.debugLine="Log($\"Conectado: ${Success}\"$)";
+anywheresoftware.b4a.keywords.Common.LogImpl("31572865",("Conectado: "+anywheresoftware.b4a.keywords.Common.SmartStringFormatter("",(Object)(_success))+""),0);
+ //BA.debugLineNum = 384;BA.debugLine="connectedMQTT=Success";
 parent._connectedmqtt = _success;
- //BA.debugLineNum = 379;BA.debugLine="If Success Then";
+ //BA.debugLineNum = 385;BA.debugLine="If Success Then";
 if (true) break;
 
 case 1:
@@ -775,9 +808,9 @@ this.state = 17;
 case 3:
 //C
 this.state = 4;
- //BA.debugLineNum = 380;BA.debugLine="ErroresReconectando=0";
+ //BA.debugLineNum = 386;BA.debugLine="ErroresReconectando=0";
 parent._erroresreconectando = (int) (0);
- //BA.debugLineNum = 381;BA.debugLine="Sleep(500)";
+ //BA.debugLineNum = 387;BA.debugLine="Sleep(500)";
 anywheresoftware.b4a.keywords.Common.Sleep(mostCurrent.activityBA,this,(int) (500));
 this.state = 19;
 return;
@@ -785,7 +818,7 @@ case 19:
 //C
 this.state = 4;
 ;
- //BA.debugLineNum = 382;BA.debugLine="If client.Connected Then";
+ //BA.debugLineNum = 388;BA.debugLine="If client.Connected Then";
 if (true) break;
 
 case 4:
@@ -800,7 +833,7 @@ this.state = 14;
 case 6:
 //C
 this.state = 7;
- //BA.debugLineNum = 383;BA.debugLine="If Config1.Get(\"keyAutoFind\") Then";
+ //BA.debugLineNum = 389;BA.debugLine="If Config1.Get(\"keyAutoFind\") Then";
 if (true) break;
 
 case 7:
@@ -815,16 +848,18 @@ this.state = 11;
 case 9:
 //C
 this.state = 12;
- //BA.debugLineNum = 384;BA.debugLine="client.Subscribe(topicLocationResult, 0)";
+ //BA.debugLineNum = 390;BA.debugLine="client.Subscribe(topicLocationResult, 0)";
 parent.mostCurrent._client.Subscribe(_topiclocationresult(),(int) (0));
- //BA.debugLineNum = 385;BA.debugLine="scanAP";
+ //BA.debugLineNum = 391;BA.debugLine="Log(topicLocationResult)";
+anywheresoftware.b4a.keywords.Common.LogImpl("31572873",_topiclocationresult(),0);
+ //BA.debugLineNum = 392;BA.debugLine="scanAP";
 _scanap();
  if (true) break;
 
 case 11:
 //C
 this.state = 12;
- //BA.debugLineNum = 387;BA.debugLine="client.Subscribe(topicRegistroResult, 0)";
+ //BA.debugLineNum = 394;BA.debugLine="client.Subscribe(topicRegistroResult, 0)";
 parent.mostCurrent._client.Subscribe(_topicregistroresult(),(int) (0));
  if (true) break;
 
@@ -832,14 +867,12 @@ case 12:
 //C
 this.state = 15;
 ;
- //BA.debugLineNum = 389;BA.debugLine="client.Subscribe(\"indoor_geolocation/registro/r";
-parent.mostCurrent._client.Subscribe("indoor_geolocation/registro/result",(int) (0));
  if (true) break;
 
 case 14:
 //C
 this.state = 15;
- //BA.debugLineNum = 391;BA.debugLine="ToastMessageShow(\"Conexión MQTT no activa\" , Fa";
+ //BA.debugLineNum = 397;BA.debugLine="ToastMessageShow(\"Conexión MQTT no activa\" , Fa";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("Conexión MQTT no activa"),anywheresoftware.b4a.keywords.Common.False);
  if (true) break;
 
@@ -852,11 +885,11 @@ this.state = 18;
 case 17:
 //C
 this.state = 18;
- //BA.debugLineNum = 394;BA.debugLine="ErroresReconectando=ErroresReconectando+1";
+ //BA.debugLineNum = 400;BA.debugLine="ErroresReconectando=ErroresReconectando+1";
 parent._erroresreconectando = (int) (parent._erroresreconectando+1);
- //BA.debugLineNum = 395;BA.debugLine="Log(LastException)";
-anywheresoftware.b4a.keywords.Common.LogImpl("51966099",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
- //BA.debugLineNum = 396;BA.debugLine="ToastMessageShow(LastException, True)";
+ //BA.debugLineNum = 401;BA.debugLine="Log(LastException)";
+anywheresoftware.b4a.keywords.Common.LogImpl("31572883",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
+ //BA.debugLineNum = 402;BA.debugLine="ToastMessageShow(LastException, True)";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA).getObject()),anywheresoftware.b4a.keywords.Common.True);
  if (true) break;
 
@@ -864,9 +897,9 @@ case 18:
 //C
 this.state = -1;
 ;
- //BA.debugLineNum = 398;BA.debugLine="setStateMQTT";
+ //BA.debugLineNum = 404;BA.debugLine="setStateMQTT";
 _setstatemqtt();
- //BA.debugLineNum = 399;BA.debugLine="End Sub";
+ //BA.debugLineNum = 405;BA.debugLine="End Sub";
 if (true) break;
 
             }
@@ -874,44 +907,106 @@ if (true) break;
     }
 }
 public static String  _clientmqtt_disconnected() throws Exception{
- //BA.debugLineNum = 401;BA.debugLine="Private Sub clientMQTT_Disconnected";
- //BA.debugLineNum = 402;BA.debugLine="Log(\"Desconectado MQTT\")";
-anywheresoftware.b4a.keywords.Common.LogImpl("52031617","Desconectado MQTT",0);
- //BA.debugLineNum = 403;BA.debugLine="connectedMQTT=False";
+ //BA.debugLineNum = 407;BA.debugLine="Private Sub clientMQTT_Disconnected";
+ //BA.debugLineNum = 408;BA.debugLine="Log(\"Desconectado MQTT\")";
+anywheresoftware.b4a.keywords.Common.LogImpl("31638401","Desconectado MQTT",0);
+ //BA.debugLineNum = 409;BA.debugLine="connectedMQTT=False";
 _connectedmqtt = anywheresoftware.b4a.keywords.Common.False;
- //BA.debugLineNum = 404;BA.debugLine="setStateMQTT";
+ //BA.debugLineNum = 410;BA.debugLine="setStateMQTT";
 _setstatemqtt();
- //BA.debugLineNum = 406;BA.debugLine="End Sub";
+ //BA.debugLineNum = 412;BA.debugLine="End Sub";
 return "";
 }
 public static String  _clientmqtt_messagearrived(String _topic,byte[] _payload) throws Exception{
 String _datos = "";
 anywheresoftware.b4a.objects.collections.JSONParser _parser = null;
 anywheresoftware.b4a.objects.collections.Map _datamap = null;
- //BA.debugLineNum = 408;BA.debugLine="Private Sub clientMQTT_MessageArrived (Topic As St";
- //BA.debugLineNum = 409;BA.debugLine="Dim datos As String = conv.StringFromBytes(Payloa";
+String _zona = "";
+anywheresoftware.b4a.objects.CSBuilder _cs = null;
+ //BA.debugLineNum = 419;BA.debugLine="Private Sub clientMQTT_MessageArrived (Topic As St";
+ //BA.debugLineNum = 420;BA.debugLine="Dim datos As String = conv.StringFromBytes(Payloa";
 _datos = mostCurrent._conv.StringFromBytes(_payload,"UTF8");
- //BA.debugLineNum = 411;BA.debugLine="Dim parser As JSONParser";
+ //BA.debugLineNum = 422;BA.debugLine="Dim parser As JSONParser";
 _parser = new anywheresoftware.b4a.objects.collections.JSONParser();
- //BA.debugLineNum = 412;BA.debugLine="parser.Initialize(datos)";
+ //BA.debugLineNum = 423;BA.debugLine="parser.Initialize(datos)";
 _parser.Initialize(_datos);
- //BA.debugLineNum = 413;BA.debugLine="Try";
-try { //BA.debugLineNum = 415;BA.debugLine="Dim dataMap As Map";
+ //BA.debugLineNum = 424;BA.debugLine="Try";
+try { //BA.debugLineNum = 426;BA.debugLine="Dim dataMap As Map";
 _datamap = new anywheresoftware.b4a.objects.collections.Map();
- //BA.debugLineNum = 416;BA.debugLine="dataMap = parser.NextObject";
+ //BA.debugLineNum = 427;BA.debugLine="dataMap = parser.NextObject";
 _datamap = _parser.NextObject();
- //BA.debugLineNum = 417;BA.debugLine="lblInfo.Text=\"ID Registro: \"&dataMap.Get(\"last_i";
-mostCurrent._lblinfo.setText(BA.ObjectToCharSequence("ID Registro: "+BA.ObjectToString(_datamap.Get((Object)("last_id")))+anywheresoftware.b4a.keywords.Common.CRLF+"Insertados: "+BA.ObjectToString(_datamap.Get((Object)("affectedRows")))));
- //BA.debugLineNum = 418;BA.debugLine="lblInfo.Visible=True";
+ //BA.debugLineNum = 428;BA.debugLine="If Topic.Contains(\"location\") Then";
+if (_topic.contains("location")) { 
+ //BA.debugLineNum = 430;BA.debugLine="Dim zona As String=dataMap.Get(\"zona_estimada\")";
+_zona = BA.ObjectToString(_datamap.Get((Object)("zona_estimada")));
+ //BA.debugLineNum = 431;BA.debugLine="Dim cs As CSBuilder";
+_cs = new anywheresoftware.b4a.objects.CSBuilder();
+ //BA.debugLineNum = 432;BA.debugLine="cs.Initialize";
+_cs.Initialize();
+ //BA.debugLineNum = 434;BA.debugLine="cs.Typeface(Typeface.MATERIALICONS).Append(Chr(";
+_cs.Typeface(anywheresoftware.b4a.keywords.Common.Typeface.getMATERIALICONS()).Append(BA.ObjectToCharSequence(anywheresoftware.b4a.keywords.Common.Chr(((int)0xe88a)))).PopAll();
+ //BA.debugLineNum = 435;BA.debugLine="cs.Append(\" NIVEL: \").PopAll";
+_cs.Append(BA.ObjectToCharSequence(" NIVEL: ")).PopAll();
+ //BA.debugLineNum = 436;BA.debugLine="cs.Color(Colors.Blue).Append(dataMap.Get(\"nivel";
+_cs.Color(anywheresoftware.b4a.keywords.Common.Colors.Blue).Append(BA.ObjectToCharSequence(_datamap.Get((Object)("nivel")))).PopAll();
+ //BA.debugLineNum = 437;BA.debugLine="cs.Append(CRLF)";
+_cs.Append(BA.ObjectToCharSequence(anywheresoftware.b4a.keywords.Common.CRLF));
+ //BA.debugLineNum = 439;BA.debugLine="cs.Typeface(Typeface.MATERIALICONS).Append(Chr(";
+_cs.Typeface(anywheresoftware.b4a.keywords.Common.Typeface.getMATERIALICONS()).Append(BA.ObjectToCharSequence(anywheresoftware.b4a.keywords.Common.Chr(((int)0xe55a)))).PopAll();
+ //BA.debugLineNum = 440;BA.debugLine="cs.Append(\" ZONA ESTIMADA: \").PopAll";
+_cs.Append(BA.ObjectToCharSequence(" ZONA ESTIMADA: ")).PopAll();
+ //BA.debugLineNum = 441;BA.debugLine="cs.Color(Colors.Blue).Append(zona.ToUpperCase).";
+_cs.Color(anywheresoftware.b4a.keywords.Common.Colors.Blue).Append(BA.ObjectToCharSequence(_zona.toUpperCase())).PopAll();
+ //BA.debugLineNum = 442;BA.debugLine="cs.Append(CRLF)";
+_cs.Append(BA.ObjectToCharSequence(anywheresoftware.b4a.keywords.Common.CRLF));
+ //BA.debugLineNum = 444;BA.debugLine="cs.Typeface(Typeface.MATERIALICONS).Append(Chr(";
+_cs.Typeface(anywheresoftware.b4a.keywords.Common.Typeface.getMATERIALICONS()).Append(BA.ObjectToCharSequence(anywheresoftware.b4a.keywords.Common.Chr(((int)0xe55c)))).PopAll();
+ //BA.debugLineNum = 445;BA.debugLine="cs.Append(\" COORDENADAS:\").PopAll";
+_cs.Append(BA.ObjectToCharSequence(" COORDENADAS:")).PopAll();
+ //BA.debugLineNum = 446;BA.debugLine="cs.Append(CRLF & TAB)";
+_cs.Append(BA.ObjectToCharSequence(anywheresoftware.b4a.keywords.Common.CRLF+anywheresoftware.b4a.keywords.Common.TAB));
+ //BA.debugLineNum = 448;BA.debugLine="cs.Append(\"→ X: \").PopAll";
+_cs.Append(BA.ObjectToCharSequence("→ X: ")).PopAll();
+ //BA.debugLineNum = 449;BA.debugLine="cs.Color(Colors.Blue).Append(dataMap.Get(\"x\")).";
+_cs.Color(anywheresoftware.b4a.keywords.Common.Colors.Blue).Append(BA.ObjectToCharSequence(_datamap.Get((Object)("x")))).PopAll();
+ //BA.debugLineNum = 450;BA.debugLine="cs.Append(CRLF & TAB)";
+_cs.Append(BA.ObjectToCharSequence(anywheresoftware.b4a.keywords.Common.CRLF+anywheresoftware.b4a.keywords.Common.TAB));
+ //BA.debugLineNum = 452;BA.debugLine="cs.Append(\"→ Y: \").PopAll";
+_cs.Append(BA.ObjectToCharSequence("→ Y: ")).PopAll();
+ //BA.debugLineNum = 453;BA.debugLine="cs.Color(Colors.Blue).Append(dataMap.Get(\"y\")).";
+_cs.Color(anywheresoftware.b4a.keywords.Common.Colors.Blue).Append(BA.ObjectToCharSequence(_datamap.Get((Object)("y")))).PopAll();
+ //BA.debugLineNum = 454;BA.debugLine="cs.Append(CRLF)";
+_cs.Append(BA.ObjectToCharSequence(anywheresoftware.b4a.keywords.Common.CRLF));
+ //BA.debugLineNum = 456;BA.debugLine="cs.Typeface(Typeface.MATERIALICONS).Append(Chr(";
+_cs.Typeface(anywheresoftware.b4a.keywords.Common.Typeface.getMATERIALICONS()).Append(BA.ObjectToCharSequence(anywheresoftware.b4a.keywords.Common.Chr(((int)0xe192)))).PopAll();
+ //BA.debugLineNum = 457;BA.debugLine="cs.Append(\" FECHA HORA: \").PopAll";
+_cs.Append(BA.ObjectToCharSequence(" FECHA HORA: ")).PopAll();
+ //BA.debugLineNum = 458;BA.debugLine="cs.Color(Colors.Blue).Append(ConvertirTimestamp";
+_cs.Color(anywheresoftware.b4a.keywords.Common.Colors.Blue).Append(BA.ObjectToCharSequence(_convertirtimestamp(BA.ObjectToLongNumber(_datamap.Get((Object)("timestamp")))))).PopAll();
+ //BA.debugLineNum = 460;BA.debugLine="lblInfo.Text = cs";
+mostCurrent._lblinfo.setText(BA.ObjectToCharSequence(_cs.getObject()));
+ //BA.debugLineNum = 462;BA.debugLine="lblInfo.Height=150dip";
+mostCurrent._lblinfo.setHeight(anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (150)));
+ //BA.debugLineNum = 463;BA.debugLine="lblInfo.Visible=True";
 mostCurrent._lblinfo.setVisible(anywheresoftware.b4a.keywords.Common.True);
+ }else {
+ //BA.debugLineNum = 465;BA.debugLine="lblInfo.Typeface=Typeface.DEFAULT";
+mostCurrent._lblinfo.setTypeface(anywheresoftware.b4a.keywords.Common.Typeface.DEFAULT);
+ //BA.debugLineNum = 466;BA.debugLine="lblInfo.Text=\"ID Registro: \"&dataMap.Get(\"last_";
+mostCurrent._lblinfo.setText(BA.ObjectToCharSequence("ID Registro: "+BA.ObjectToString(_datamap.Get((Object)("last_id")))+anywheresoftware.b4a.keywords.Common.CRLF+"Insertados: "+BA.ObjectToString(_datamap.Get((Object)("affectedRows")))));
+ //BA.debugLineNum = 467;BA.debugLine="lblInfo.Height=50dip";
+mostCurrent._lblinfo.setHeight(anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (50)));
+ //BA.debugLineNum = 468;BA.debugLine="lblInfo.Visible=True";
+mostCurrent._lblinfo.setVisible(anywheresoftware.b4a.keywords.Common.True);
+ };
  } 
-       catch (Exception e10) {
-			processBA.setLastException(e10); //BA.debugLineNum = 420;BA.debugLine="ToastMessageShow(datos,True)";
+       catch (Exception e41) {
+			processBA.setLastException(e41); //BA.debugLineNum = 472;BA.debugLine="ToastMessageShow(datos,True)";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence(_datos),anywheresoftware.b4a.keywords.Common.True);
  };
- //BA.debugLineNum = 422;BA.debugLine="Log(dataMap)";
-anywheresoftware.b4a.keywords.Common.LogImpl("52097166",BA.ObjectToString(_datamap),0);
- //BA.debugLineNum = 423;BA.debugLine="End Sub";
+ //BA.debugLineNum = 474;BA.debugLine="Log(dataMap)";
+anywheresoftware.b4a.keywords.Common.LogImpl("31703991",BA.ObjectToString(_datamap),0);
+ //BA.debugLineNum = 475;BA.debugLine="End Sub";
 return "";
 }
 public static String  _connect_mqtt() throws Exception{
@@ -919,61 +1014,75 @@ String _serveruri = "";
 anywheresoftware.b4j.objects.MqttAsyncClientWrapper.MqttConnectOptionsWrapper _mo = null;
 String _user = "";
 String _pass = "";
- //BA.debugLineNum = 341;BA.debugLine="Sub connect_MQTT";
- //BA.debugLineNum = 342;BA.debugLine="Try";
-try { //BA.debugLineNum = 343;BA.debugLine="If  Config1.Get(\"keySSL\") Then";
+ //BA.debugLineNum = 346;BA.debugLine="Sub connect_MQTT";
+ //BA.debugLineNum = 347;BA.debugLine="If connectedMQTT Then Return";
+if (_connectedmqtt) { 
+if (true) return "";};
+ //BA.debugLineNum = 348;BA.debugLine="Try";
+try { //BA.debugLineNum = 349;BA.debugLine="If  Config1.Get(\"keySSL\") Then";
 if (BA.ObjectToBoolean(_config1.Get((Object)("keySSL")))) { 
- //BA.debugLineNum = 344;BA.debugLine="Dim serverURI As String = \"ssl://\" & Config1.Ge";
+ //BA.debugLineNum = 350;BA.debugLine="Dim serverURI As String = \"ssl://\" & Config1.Ge";
 _serveruri = "ssl://"+BA.ObjectToString(_config1.Get((Object)("keyHostMQTT")))+":"+BA.ObjectToString(_config1.Get((Object)("keyPortMQTT")));
- //BA.debugLineNum = 345;BA.debugLine="client.Initialize(\"clientMQTT\", serverURI, CLIE";
+ //BA.debugLineNum = 351;BA.debugLine="client.Initialize(\"clientMQTT\", serverURI, CLIE";
 mostCurrent._client.Initialize(processBA,"clientMQTT",_serveruri,mostCurrent._client_id);
  }else {
- //BA.debugLineNum = 347;BA.debugLine="client.Initialize(\"clientMQTT\",\"tcp://\"&Config1";
+ //BA.debugLineNum = 353;BA.debugLine="client.Initialize(\"clientMQTT\",\"tcp://\"&Config1";
 mostCurrent._client.Initialize(processBA,"clientMQTT","tcp://"+BA.ObjectToString(_config1.Get((Object)("keyHostMQTT")))+":"+BA.ObjectToString(_config1.Get((Object)("keyPortMQTT"))),mostCurrent._client_id);
  };
  } 
-       catch (Exception e9) {
-			processBA.setLastException(e9); //BA.debugLineNum = 350;BA.debugLine="ToastMessageShow(LastException.Message,True)";
+       catch (Exception e10) {
+			processBA.setLastException(e10); //BA.debugLineNum = 356;BA.debugLine="ToastMessageShow(LastException.Message,True)";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA).getMessage()),anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 351;BA.debugLine="Return";
+ //BA.debugLineNum = 357;BA.debugLine="Return";
 if (true) return "";
  };
- //BA.debugLineNum = 353;BA.debugLine="If Config1.Get(\"keyUser\")<>\"*\" Then";
+ //BA.debugLineNum = 359;BA.debugLine="If Config1.Get(\"keyUser\")<>\"*\" Then";
 if ((_config1.Get((Object)("keyUser"))).equals((Object)("*")) == false) { 
- //BA.debugLineNum = 354;BA.debugLine="Dim mo As MqttConnectOptions";
+ //BA.debugLineNum = 360;BA.debugLine="Dim mo As MqttConnectOptions";
 _mo = new anywheresoftware.b4j.objects.MqttAsyncClientWrapper.MqttConnectOptionsWrapper();
- //BA.debugLineNum = 355;BA.debugLine="Dim user As String=Config1.Get(\"keyUser\")";
+ //BA.debugLineNum = 361;BA.debugLine="Dim user As String=Config1.Get(\"keyUser\")";
 _user = BA.ObjectToString(_config1.Get((Object)("keyUser")));
- //BA.debugLineNum = 356;BA.debugLine="Dim pass As String=Config1.Get(\"keyPass\")";
+ //BA.debugLineNum = 362;BA.debugLine="Dim pass As String=Config1.Get(\"keyPass\")";
 _pass = BA.ObjectToString(_config1.Get((Object)("keyPass")));
- //BA.debugLineNum = 357;BA.debugLine="mo.Initialize(user.trim, pass.trim)";
+ //BA.debugLineNum = 363;BA.debugLine="mo.Initialize(user.trim, pass.trim)";
 _mo.Initialize(_user.trim(),_pass.trim());
  };
- //BA.debugLineNum = 359;BA.debugLine="Try";
-try { //BA.debugLineNum = 360;BA.debugLine="If Config1.Get(\"keyUser\")<>\"*\" Then";
+ //BA.debugLineNum = 365;BA.debugLine="Try";
+try { //BA.debugLineNum = 366;BA.debugLine="If Config1.Get(\"keyUser\")<>\"*\" Then";
 if ((_config1.Get((Object)("keyUser"))).equals((Object)("*")) == false) { 
- //BA.debugLineNum = 361;BA.debugLine="client.Connect2(mo)";
+ //BA.debugLineNum = 367;BA.debugLine="client.Connect2(mo)";
 mostCurrent._client.Connect2((org.eclipse.paho.client.mqttv3.MqttConnectOptions)(_mo.getObject()));
  }else {
- //BA.debugLineNum = 363;BA.debugLine="client.Connect";
+ //BA.debugLineNum = 369;BA.debugLine="client.Connect";
 mostCurrent._client.Connect();
  };
- //BA.debugLineNum = 365;BA.debugLine="If ErroresReconectando<1 Then";
+ //BA.debugLineNum = 371;BA.debugLine="If ErroresReconectando<1 Then";
 if (_erroresreconectando<1) { 
- //BA.debugLineNum = 366;BA.debugLine="tmrMQTTReconnect.Enabled=True";
+ //BA.debugLineNum = 372;BA.debugLine="tmrMQTTReconnect.Enabled=True";
 mostCurrent._tmrmqttreconnect.setEnabled(anywheresoftware.b4a.keywords.Common.True);
  }else {
- //BA.debugLineNum = 368;BA.debugLine="tmrMQTTReconnect.Enabled=False";
+ //BA.debugLineNum = 374;BA.debugLine="tmrMQTTReconnect.Enabled=False";
 mostCurrent._tmrmqttreconnect.setEnabled(anywheresoftware.b4a.keywords.Common.False);
  };
- //BA.debugLineNum = 370;BA.debugLine="tmrAutoScan.Enabled=Config1.Get(\"keyAutoFind\")";
+ //BA.debugLineNum = 376;BA.debugLine="tmrAutoScan.Enabled=Config1.Get(\"keyAutoFind\")";
 mostCurrent._tmrautoscan.setEnabled(BA.ObjectToBoolean(_config1.Get((Object)("keyAutoFind"))));
  } 
-       catch (Exception e31) {
-			processBA.setLastException(e31); //BA.debugLineNum = 372;BA.debugLine="ToastMessageShow(\"Error conectando \"&LastExcepti";
+       catch (Exception e32) {
+			processBA.setLastException(e32); //BA.debugLineNum = 378;BA.debugLine="ToastMessageShow(\"Error conectando \"&LastExcepti";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("Error conectando "+anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA).getMessage()),anywheresoftware.b4a.keywords.Common.True);
  };
- //BA.debugLineNum = 374;BA.debugLine="End Sub";
+ //BA.debugLineNum = 380;BA.debugLine="End Sub";
+return "";
+}
+public static String  _convertirtimestamp(long _dt) throws Exception{
+ //BA.debugLineNum = 413;BA.debugLine="Sub ConvertirTimestamp(dt As Long) As String";
+ //BA.debugLineNum = 414;BA.debugLine="DateTime.DateFormat=\"dd/MM/yy\"";
+anywheresoftware.b4a.keywords.Common.DateTime.setDateFormat("dd/MM/yy");
+ //BA.debugLineNum = 415;BA.debugLine="DateTime.TimeFormat=\"HH:ss:ss\"";
+anywheresoftware.b4a.keywords.Common.DateTime.setTimeFormat("HH:ss:ss");
+ //BA.debugLineNum = 416;BA.debugLine="Return DateTime.Date(dt) & \" \" & DateTime.Time(dt";
+if (true) return anywheresoftware.b4a.keywords.Common.DateTime.Date(_dt)+" "+anywheresoftware.b4a.keywords.Common.DateTime.Time(_dt);
+ //BA.debugLineNum = 417;BA.debugLine="End Sub";
 return "";
 }
 public static String  _converttojson(indoorgeolocation.aps.uvigo.main._tregistro _registro,anywheresoftware.b4a.objects.collections.List _wifiscans) throws Exception{
@@ -1009,33 +1118,33 @@ return "";
 }
 public static String  _gettopic(boolean _location,boolean _result) throws Exception{
 String _topic = "";
- //BA.debugLineNum = 311;BA.debugLine="Sub getTopic(location As Boolean,result As Boolean";
- //BA.debugLineNum = 312;BA.debugLine="Dim topic As String=Config1.Get(\"keyTopic\")";
+ //BA.debugLineNum = 313;BA.debugLine="Sub getTopic(location As Boolean,result As Boolean";
+ //BA.debugLineNum = 314;BA.debugLine="Dim topic As String=Config1.Get(\"keyTopic\")";
 _topic = BA.ObjectToString(_config1.Get((Object)("keyTopic")));
- //BA.debugLineNum = 313;BA.debugLine="If topic=Null Then";
+ //BA.debugLineNum = 315;BA.debugLine="If topic=Null Then";
 if (_topic== null) { 
- //BA.debugLineNum = 314;BA.debugLine="topic=\"GX\"";
+ //BA.debugLineNum = 316;BA.debugLine="topic=\"GX\"";
 _topic = "GX";
  };
- //BA.debugLineNum = 316;BA.debugLine="If location Then";
+ //BA.debugLineNum = 318;BA.debugLine="If location Then";
 if (_location) { 
- //BA.debugLineNum = 317;BA.debugLine="topic= \"indoor_geolocation/\"&topic&\"/location\"";
+ //BA.debugLineNum = 319;BA.debugLine="topic= \"indoor_geolocation/\"&topic&\"/location\"";
 _topic = "indoor_geolocation/"+_topic+"/location";
  }else {
- //BA.debugLineNum = 319;BA.debugLine="topic= \"indoor_geolocation/\"&topic&\"/registro\"";
+ //BA.debugLineNum = 321;BA.debugLine="topic= \"indoor_geolocation/\"&topic&\"/registro\"";
 _topic = "indoor_geolocation/"+_topic+"/registro";
  };
- //BA.debugLineNum = 321;BA.debugLine="If result Then";
+ //BA.debugLineNum = 323;BA.debugLine="If result Then";
 if (_result) { 
- //BA.debugLineNum = 322;BA.debugLine="topic= topic&\"/result\"";
+ //BA.debugLineNum = 324;BA.debugLine="topic= topic&\"/result\"";
 _topic = _topic+"/result";
  }else {
- //BA.debugLineNum = 324;BA.debugLine="topic= topic&\"/data\"";
+ //BA.debugLineNum = 326;BA.debugLine="topic= topic&\"/data\"";
 _topic = _topic+"/data";
  };
- //BA.debugLineNum = 326;BA.debugLine="Return topic";
+ //BA.debugLineNum = 328;BA.debugLine="Return topic";
 if (true) return _topic;
- //BA.debugLineNum = 327;BA.debugLine="End Sub";
+ //BA.debugLineNum = 329;BA.debugLine="End Sub";
 return "";
 }
 public static String  _globals() throws Exception{
@@ -1082,80 +1191,80 @@ mostCurrent._client_id = "";
 return "";
 }
 public static boolean  _loadconfig() throws Exception{
- //BA.debugLineNum = 427;BA.debugLine="private Sub LoadConfig As Boolean";
- //BA.debugLineNum = 428;BA.debugLine="Config1.Initialize";
+ //BA.debugLineNum = 479;BA.debugLine="private Sub LoadConfig As Boolean";
+ //BA.debugLineNum = 480;BA.debugLine="Config1.Initialize";
 _config1.Initialize();
- //BA.debugLineNum = 429;BA.debugLine="xui.SetDataFolder (\"preferences\")";
+ //BA.debugLineNum = 481;BA.debugLine="xui.SetDataFolder (\"preferences\")";
 _xui.SetDataFolder("preferences");
- //BA.debugLineNum = 430;BA.debugLine="prefdialog.Initialize(Activity, \"Configuración\",";
+ //BA.debugLineNum = 482;BA.debugLine="prefdialog.Initialize(Activity, \"Configuración\",";
 mostCurrent._prefdialog._initialize /*String*/ (mostCurrent.activityBA,(anywheresoftware.b4a.objects.B4XViewWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.B4XViewWrapper(), (java.lang.Object)(mostCurrent._activity.getObject())),(Object)("Configuración"),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (300)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (500)));
- //BA.debugLineNum = 431;BA.debugLine="prefdialog.LoadFromJson(File.ReadString(File.DirA";
+ //BA.debugLineNum = 483;BA.debugLine="prefdialog.LoadFromJson(File.ReadString(File.DirA";
 mostCurrent._prefdialog._loadfromjson /*String*/ (anywheresoftware.b4a.keywords.Common.File.ReadString(anywheresoftware.b4a.keywords.Common.File.getDirAssets(),"config.json"));
- //BA.debugLineNum = 433;BA.debugLine="prefdialog.SetEventsListener(Me, \"PrefDialog\")";
+ //BA.debugLineNum = 485;BA.debugLine="prefdialog.SetEventsListener(Me, \"PrefDialog\")";
 mostCurrent._prefdialog._seteventslistener /*String*/ (main.getObject(),"PrefDialog");
- //BA.debugLineNum = 434;BA.debugLine="Return LoadSavedData";
+ //BA.debugLineNum = 486;BA.debugLine="Return LoadSavedData";
 if (true) return _loadsaveddata();
- //BA.debugLineNum = 435;BA.debugLine="End Sub";
+ //BA.debugLineNum = 487;BA.debugLine="End Sub";
 return false;
 }
 public static boolean  _loadsaveddata() throws Exception{
 String _jsonstring = "";
 anywheresoftware.b4a.objects.collections.JSONParser _jsonparser = null;
 anywheresoftware.b4a.objects.collections.Map _m = null;
- //BA.debugLineNum = 446;BA.debugLine="Private Sub LoadSavedData As Boolean";
- //BA.debugLineNum = 447;BA.debugLine="Try";
-try { //BA.debugLineNum = 448;BA.debugLine="If File.Exists(xui.DefaultFolder, ConfigFile) Th";
+ //BA.debugLineNum = 498;BA.debugLine="Private Sub LoadSavedData As Boolean";
+ //BA.debugLineNum = 499;BA.debugLine="Try";
+try { //BA.debugLineNum = 500;BA.debugLine="If File.Exists(xui.DefaultFolder, ConfigFile) Th";
 if (anywheresoftware.b4a.keywords.Common.File.Exists(_xui.getDefaultFolder(),mostCurrent._configfile)) { 
- //BA.debugLineNum = 449;BA.debugLine="Dim jsonString As String = File.ReadString(xui.";
+ //BA.debugLineNum = 501;BA.debugLine="Dim jsonString As String = File.ReadString(xui.";
 _jsonstring = anywheresoftware.b4a.keywords.Common.File.ReadString(_xui.getDefaultFolder(),mostCurrent._configfile);
- //BA.debugLineNum = 450;BA.debugLine="Dim JSONParser As JSONParser";
+ //BA.debugLineNum = 502;BA.debugLine="Dim JSONParser As JSONParser";
 _jsonparser = new anywheresoftware.b4a.objects.collections.JSONParser();
- //BA.debugLineNum = 451;BA.debugLine="JSONParser.Initialize(jsonString)";
+ //BA.debugLineNum = 503;BA.debugLine="JSONParser.Initialize(jsonString)";
 _jsonparser.Initialize(_jsonstring);
- //BA.debugLineNum = 452;BA.debugLine="Dim m As Map = JSONParser.NextObject";
+ //BA.debugLineNum = 504;BA.debugLine="Dim m As Map = JSONParser.NextObject";
 _m = new anywheresoftware.b4a.objects.collections.Map();
 _m = _jsonparser.NextObject();
- //BA.debugLineNum = 453;BA.debugLine="Config1=m";
+ //BA.debugLineNum = 505;BA.debugLine="Config1=m";
 _config1 = _m;
- //BA.debugLineNum = 454;BA.debugLine="SaveConfig(Config1)";
+ //BA.debugLineNum = 506;BA.debugLine="SaveConfig(Config1)";
 _saveconfig(_config1);
- //BA.debugLineNum = 455;BA.debugLine="Return True";
+ //BA.debugLineNum = 507;BA.debugLine="Return True";
 if (true) return anywheresoftware.b4a.keywords.Common.True;
  }else {
- //BA.debugLineNum = 457;BA.debugLine="Config1.Put(\"keyHostMQTT\",    \"test.mosquitto.o";
+ //BA.debugLineNum = 509;BA.debugLine="Config1.Put(\"keyHostMQTT\",    \"test.mosquitto.o";
 _config1.Put((Object)("keyHostMQTT"),(Object)("test.mosquitto.org"));
- //BA.debugLineNum = 458;BA.debugLine="Config1.Put(\"keyPortMQTT\",    1883)";
+ //BA.debugLineNum = 510;BA.debugLine="Config1.Put(\"keyPortMQTT\",    1883)";
 _config1.Put((Object)("keyPortMQTT"),(Object)(1883));
- //BA.debugLineNum = 459;BA.debugLine="Config1.Put(\"keyUser\",        \"*\")";
+ //BA.debugLineNum = 511;BA.debugLine="Config1.Put(\"keyUser\",        \"*\")";
 _config1.Put((Object)("keyUser"),(Object)("*"));
- //BA.debugLineNum = 460;BA.debugLine="Config1.Put(\"keyPass\",        \"\")";
+ //BA.debugLineNum = 512;BA.debugLine="Config1.Put(\"keyPass\",        \"\")";
 _config1.Put((Object)("keyPass"),(Object)(""));
- //BA.debugLineNum = 461;BA.debugLine="Config1.Put(\"keySSL\",        False)";
+ //BA.debugLineNum = 513;BA.debugLine="Config1.Put(\"keySSL\",        False)";
 _config1.Put((Object)("keySSL"),(Object)(anywheresoftware.b4a.keywords.Common.False));
- //BA.debugLineNum = 462;BA.debugLine="Config1.Put(\"keyTopic\",       \"GX\")";
+ //BA.debugLineNum = 514;BA.debugLine="Config1.Put(\"keyTopic\",       \"GX\")";
 _config1.Put((Object)("keyTopic"),(Object)("GX"));
- //BA.debugLineNum = 463;BA.debugLine="Config1.Put(\"keyAutoFind\",    False)";
+ //BA.debugLineNum = 515;BA.debugLine="Config1.Put(\"keyAutoFind\",    False)";
 _config1.Put((Object)("keyAutoFind"),(Object)(anywheresoftware.b4a.keywords.Common.False));
- //BA.debugLineNum = 465;BA.debugLine="SaveConfig(Config1)";
+ //BA.debugLineNum = 517;BA.debugLine="SaveConfig(Config1)";
 _saveconfig(_config1);
- //BA.debugLineNum = 466;BA.debugLine="Return True";
+ //BA.debugLineNum = 518;BA.debugLine="Return True";
 if (true) return anywheresoftware.b4a.keywords.Common.True;
  };
  } 
        catch (Exception e22) {
-			processBA.setLastException(e22); //BA.debugLineNum = 469;BA.debugLine="Log(LastException)";
-anywheresoftware.b4a.keywords.Common.LogImpl("52293783",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
- //BA.debugLineNum = 470;BA.debugLine="Return False";
+			processBA.setLastException(e22); //BA.debugLineNum = 521;BA.debugLine="Log(LastException)";
+anywheresoftware.b4a.keywords.Common.LogImpl("31900567",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
+ //BA.debugLineNum = 522;BA.debugLine="Return False";
 if (true) return anywheresoftware.b4a.keywords.Common.False;
  };
- //BA.debugLineNum = 472;BA.debugLine="End Sub";
+ //BA.debugLineNum = 524;BA.debugLine="End Sub";
 return false;
 }
 public static boolean  _prefdialog_isvalid(anywheresoftware.b4a.objects.collections.Map _tempdata) throws Exception{
- //BA.debugLineNum = 437;BA.debugLine="Private Sub PrefDialog_IsValid (TempData As Map) A";
- //BA.debugLineNum = 443;BA.debugLine="Return True";
+ //BA.debugLineNum = 489;BA.debugLine="Private Sub PrefDialog_IsValid (TempData As Map) A";
+ //BA.debugLineNum = 495;BA.debugLine="Return True";
 if (true) return anywheresoftware.b4a.keywords.Common.True;
- //BA.debugLineNum = 444;BA.debugLine="End Sub";
+ //BA.debugLineNum = 496;BA.debugLine="End Sub";
 return false;
 }
 
@@ -1205,16 +1314,16 @@ return "";
 public static String  _saveconfig(anywheresoftware.b4a.objects.collections.Map _config) throws Exception{
 anywheresoftware.b4a.objects.collections.JSONParser.JSONGenerator _jsongenerator = null;
 String _jsonstring = "";
- //BA.debugLineNum = 474;BA.debugLine="Private Sub SaveConfig (Config As Map)";
- //BA.debugLineNum = 475;BA.debugLine="Dim JSONGenerator As JSONGenerator";
+ //BA.debugLineNum = 526;BA.debugLine="Private Sub SaveConfig (Config As Map)";
+ //BA.debugLineNum = 527;BA.debugLine="Dim JSONGenerator As JSONGenerator";
 _jsongenerator = new anywheresoftware.b4a.objects.collections.JSONParser.JSONGenerator();
- //BA.debugLineNum = 476;BA.debugLine="JSONGenerator.Initialize(Config)";
+ //BA.debugLineNum = 528;BA.debugLine="JSONGenerator.Initialize(Config)";
 _jsongenerator.Initialize(_config);
- //BA.debugLineNum = 477;BA.debugLine="Dim jsonString As String = JSONGenerator.ToString";
+ //BA.debugLineNum = 529;BA.debugLine="Dim jsonString As String = JSONGenerator.ToString";
 _jsonstring = _jsongenerator.ToString();
- //BA.debugLineNum = 478;BA.debugLine="File.WriteString(xui.DefaultFolder, ConfigFile, j";
+ //BA.debugLineNum = 530;BA.debugLine="File.WriteString(xui.DefaultFolder, ConfigFile, j";
 anywheresoftware.b4a.keywords.Common.File.WriteString(_xui.getDefaultFolder(),mostCurrent._configfile,_jsonstring);
- //BA.debugLineNum = 479;BA.debugLine="End Sub";
+ //BA.debugLineNum = 531;BA.debugLine="End Sub";
 return "";
 }
 public static anywheresoftware.b4a.objects.collections.Map  _savetregistrotomap(indoorgeolocation.aps.uvigo.main._tregistro _r) throws Exception{
@@ -1269,156 +1378,170 @@ return;
 case 0:
 //C
 this.state = 1;
- //BA.debugLineNum = 239;BA.debugLine="lblInfo.Visible=False";
-parent.mostCurrent._lblinfo.setVisible(anywheresoftware.b4a.keywords.Common.False);
- //BA.debugLineNum = 240;BA.debugLine="If Not(connectedMQTT) Then";
+ //BA.debugLineNum = 239;BA.debugLine="If Config1.Get(\"keyAutoFind\")=False Then";
 if (true) break;
 
 case 1:
 //if
-this.state = 26;
-if (anywheresoftware.b4a.keywords.Common.Not(parent._connectedmqtt)) { 
+this.state = 4;
+if ((parent._config1.Get((Object)("keyAutoFind"))).equals((Object)(anywheresoftware.b4a.keywords.Common.False))) { 
 this.state = 3;
-}else {
-this.state = 5;
 }if (true) break;
 
 case 3:
 //C
-this.state = 26;
- //BA.debugLineNum = 241;BA.debugLine="ToastMessageShow(\"No conectado al servidor MQTT.";
+this.state = 4;
+ //BA.debugLineNum = 240;BA.debugLine="lblInfo.Visible=False";
+parent.mostCurrent._lblinfo.setVisible(anywheresoftware.b4a.keywords.Common.False);
+ if (true) break;
+;
+ //BA.debugLineNum = 242;BA.debugLine="If Not(client.Connected ) Then";
+
+case 4:
+//if
+this.state = 29;
+if (anywheresoftware.b4a.keywords.Common.Not(parent.mostCurrent._client.getConnected())) { 
+this.state = 6;
+}else {
+this.state = 8;
+}if (true) break;
+
+case 6:
+//C
+this.state = 29;
+ //BA.debugLineNum = 243;BA.debugLine="ToastMessageShow(\"No conectado al servidor MQTT.";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("No conectado al servidor MQTT."),anywheresoftware.b4a.keywords.Common.False);
  if (true) break;
 
-case 5:
-//C
-this.state = 6;
- //BA.debugLineNum = 243;BA.debugLine="If Not (WifiObject.isWifiEnabled) Then";
-if (true) break;
-
-case 6:
-//if
-this.state = 25;
-if (anywheresoftware.b4a.keywords.Common.Not(parent._wifiobject.isWifiEnabled())) { 
-this.state = 8;
-}else {
-this.state = 10;
-}if (true) break;
-
 case 8:
 //C
-this.state = 25;
- //BA.debugLineNum = 244;BA.debugLine="ToastMessageShow(\"La wifi no está activada.\",Fa";
+this.state = 9;
+ //BA.debugLineNum = 245;BA.debugLine="If Not (WifiObject.isWifiEnabled) Then";
+if (true) break;
+
+case 9:
+//if
+this.state = 28;
+if (anywheresoftware.b4a.keywords.Common.Not(parent._wifiobject.isWifiEnabled())) { 
+this.state = 11;
+}else {
+this.state = 13;
+}if (true) break;
+
+case 11:
+//C
+this.state = 28;
+ //BA.debugLineNum = 246;BA.debugLine="ToastMessageShow(\"La wifi no está activada.\",Fa";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("La wifi no está activada."),anywheresoftware.b4a.keywords.Common.False);
  if (true) break;
 
-case 10:
-//C
-this.state = 11;
- //BA.debugLineNum = 246;BA.debugLine="If Config1.Get(\"keyAutoFind\") Then";
-if (true) break;
-
-case 11:
-//if
-this.state = 24;
-if (BA.ObjectToBoolean(parent._config1.Get((Object)("keyAutoFind")))) { 
-this.state = 13;
-}else {
-this.state = 15;
-}if (true) break;
-
 case 13:
 //C
-this.state = 24;
- //BA.debugLineNum = 247;BA.debugLine="scanningWifi=True";
-parent._scanningwifi = anywheresoftware.b4a.keywords.Common.True;
- //BA.debugLineNum = 248;BA.debugLine="wifiScan.startScan(\"wifi\",False)";
-parent._wifiscan.startScan(processBA,"wifi",anywheresoftware.b4a.keywords.Common.False);
- if (true) break;
-
-case 15:
-//C
-this.state = 16;
- //BA.debugLineNum = 250;BA.debugLine="prefdialog.Initialize(Activity, \"Datos punto\",";
-parent.mostCurrent._prefdialog._initialize /*String*/ (mostCurrent.activityBA,(anywheresoftware.b4a.objects.B4XViewWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.B4XViewWrapper(), (java.lang.Object)(parent.mostCurrent._activity.getObject())),(Object)("Datos punto"),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (300)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (500)));
- //BA.debugLineNum = 251;BA.debugLine="prefdialog.LoadFromJson(File.ReadString(File.D";
-parent.mostCurrent._prefdialog._loadfromjson /*String*/ (anywheresoftware.b4a.keywords.Common.File.ReadString(anywheresoftware.b4a.keywords.Common.File.getDirAssets(),"paramRegister.json"));
- //BA.debugLineNum = 252;BA.debugLine="If Not (DataPoint.IsInitialized) Then";
+this.state = 14;
+ //BA.debugLineNum = 248;BA.debugLine="If Config1.Get(\"keyAutoFind\") Then";
 if (true) break;
 
-case 16:
+case 14:
 //if
-this.state = 19;
-if (anywheresoftware.b4a.keywords.Common.Not(parent._datapoint.IsInitialized())) { 
+this.state = 27;
+if (BA.ObjectToBoolean(parent._config1.Get((Object)("keyAutoFind")))) { 
+this.state = 16;
+}else {
 this.state = 18;
 }if (true) break;
+
+case 16:
+//C
+this.state = 27;
+ //BA.debugLineNum = 249;BA.debugLine="scanningWifi=True";
+parent._scanningwifi = anywheresoftware.b4a.keywords.Common.True;
+ //BA.debugLineNum = 250;BA.debugLine="wifiScan.startScan(\"wifi\",False)";
+parent._wifiscan.startScan(processBA,"wifi",anywheresoftware.b4a.keywords.Common.False);
+ if (true) break;
 
 case 18:
 //C
 this.state = 19;
- //BA.debugLineNum = 253;BA.debugLine="DataPoint.Initialize";
-parent._datapoint.Initialize();
- //BA.debugLineNum = 254;BA.debugLine="DataPoint.Put(\"keyLevel\",\"PB\")";
-parent._datapoint.Put((Object)("keyLevel"),(Object)("PB"));
- //BA.debugLineNum = 255;BA.debugLine="DataPoint.Put(\"keyPoint\",1)";
-parent._datapoint.Put((Object)("keyPoint"),(Object)(1));
- if (true) break;
-
-case 19:
-//C
-this.state = 20;
-;
- //BA.debugLineNum = 257;BA.debugLine="Wait For (prefdialog.ShowDialog(DataPoint, \"OK";
-anywheresoftware.b4a.keywords.Common.WaitFor("complete", processBA, this, parent.mostCurrent._prefdialog._showdialog /*anywheresoftware.b4a.keywords.Common.ResumableSubWrapper*/ (parent._datapoint,(Object)("OK"),(Object)("CANCELAR")));
-this.state = 27;
-return;
-case 27:
-//C
-this.state = 20;
-_result = (Integer) result[0];
-;
- //BA.debugLineNum = 258;BA.debugLine="If Result = xui.DialogResponse_Positive Then";
+ //BA.debugLineNum = 252;BA.debugLine="prefdialog.Initialize(Activity, \"Datos punto\",";
+parent.mostCurrent._prefdialog._initialize /*String*/ (mostCurrent.activityBA,(anywheresoftware.b4a.objects.B4XViewWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.B4XViewWrapper(), (java.lang.Object)(parent.mostCurrent._activity.getObject())),(Object)("Datos punto"),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (300)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (500)));
+ //BA.debugLineNum = 253;BA.debugLine="prefdialog.LoadFromJson(File.ReadString(File.D";
+parent.mostCurrent._prefdialog._loadfromjson /*String*/ (anywheresoftware.b4a.keywords.Common.File.ReadString(anywheresoftware.b4a.keywords.Common.File.getDirAssets(),"paramRegister.json"));
+ //BA.debugLineNum = 254;BA.debugLine="If Not (DataPoint.IsInitialized) Then";
 if (true) break;
 
-case 20:
+case 19:
 //if
-this.state = 23;
-if (_result==parent._xui.DialogResponse_Positive) { 
 this.state = 22;
+if (anywheresoftware.b4a.keywords.Common.Not(parent._datapoint.IsInitialized())) { 
+this.state = 21;
 }if (true) break;
+
+case 21:
+//C
+this.state = 22;
+ //BA.debugLineNum = 255;BA.debugLine="DataPoint.Initialize";
+parent._datapoint.Initialize();
+ //BA.debugLineNum = 256;BA.debugLine="DataPoint.Put(\"keyLevel\",\"PB\")";
+parent._datapoint.Put((Object)("keyLevel"),(Object)("PB"));
+ //BA.debugLineNum = 257;BA.debugLine="DataPoint.Put(\"keyPoint\",1)";
+parent._datapoint.Put((Object)("keyPoint"),(Object)(1));
+ if (true) break;
 
 case 22:
 //C
 this.state = 23;
- //BA.debugLineNum = 259;BA.debugLine="ProgressDialogShow(\"Escaneando...\")";
-anywheresoftware.b4a.keywords.Common.ProgressDialogShow(mostCurrent.activityBA,BA.ObjectToCharSequence("Escaneando..."));
- //BA.debugLineNum = 260;BA.debugLine="wifiScan.startScan(\"wifi\",False)";
-parent._wifiscan.startScan(processBA,"wifi",anywheresoftware.b4a.keywords.Common.False);
- if (true) break;
+;
+ //BA.debugLineNum = 259;BA.debugLine="Wait For (prefdialog.ShowDialog(DataPoint, \"OK";
+anywheresoftware.b4a.keywords.Common.WaitFor("complete", processBA, this, parent.mostCurrent._prefdialog._showdialog /*anywheresoftware.b4a.keywords.Common.ResumableSubWrapper*/ (parent._datapoint,(Object)("OK"),(Object)("CANCELAR")));
+this.state = 30;
+return;
+case 30:
+//C
+this.state = 23;
+_result = (Integer) result[0];
+;
+ //BA.debugLineNum = 260;BA.debugLine="If Result = xui.DialogResponse_Positive Then";
+if (true) break;
 
 case 23:
-//C
-this.state = 24;
-;
- if (true) break;
-
-case 24:
-//C
+//if
+this.state = 26;
+if (_result==parent._xui.DialogResponse_Positive) { 
 this.state = 25;
-;
- if (true) break;
+}if (true) break;
 
 case 25:
 //C
 this.state = 26;
-;
+ //BA.debugLineNum = 261;BA.debugLine="ProgressDialogShow(\"Escaneando...\")";
+anywheresoftware.b4a.keywords.Common.ProgressDialogShow(mostCurrent.activityBA,BA.ObjectToCharSequence("Escaneando..."));
+ //BA.debugLineNum = 262;BA.debugLine="wifiScan.startScan(\"wifi\",False)";
+parent._wifiscan.startScan(processBA,"wifi",anywheresoftware.b4a.keywords.Common.False);
  if (true) break;
 
 case 26:
 //C
+this.state = 27;
+;
+ if (true) break;
+
+case 27:
+//C
+this.state = 28;
+;
+ if (true) break;
+
+case 28:
+//C
+this.state = 29;
+;
+ if (true) break;
+
+case 29:
+//C
 this.state = -1;
 ;
- //BA.debugLineNum = 267;BA.debugLine="End Sub";
+ //BA.debugLineNum = 269;BA.debugLine="End Sub";
 if (true) break;
 
             }
@@ -1452,72 +1575,72 @@ mostCurrent._lblscan.setVisible(anywheresoftware.b4a.keywords.Common.Not(mostCur
 return "";
 }
 public static String  _tmrautoscan_tick() throws Exception{
- //BA.debugLineNum = 285;BA.debugLine="Sub tmrAutoScan_Tick";
- //BA.debugLineNum = 287;BA.debugLine="If Not(scanningWifi) Then";
+ //BA.debugLineNum = 287;BA.debugLine="Sub tmrAutoScan_Tick";
+ //BA.debugLineNum = 289;BA.debugLine="If Not(scanningWifi) Then";
 if (anywheresoftware.b4a.keywords.Common.Not(_scanningwifi)) { 
- //BA.debugLineNum = 288;BA.debugLine="scanAP";
+ //BA.debugLineNum = 290;BA.debugLine="scanAP";
 _scanap();
  }else {
- //BA.debugLineNum = 290;BA.debugLine="counterSec=counterSec+1";
+ //BA.debugLineNum = 292;BA.debugLine="counterSec=counterSec+1";
 _countersec = (int) (_countersec+1);
- //BA.debugLineNum = 291;BA.debugLine="If counterSec>10 Then";
+ //BA.debugLineNum = 293;BA.debugLine="If counterSec>10 Then";
 if (_countersec>10) { 
- //BA.debugLineNum = 292;BA.debugLine="counterSec=0";
+ //BA.debugLineNum = 294;BA.debugLine="counterSec=0";
 _countersec = (int) (0);
- //BA.debugLineNum = 293;BA.debugLine="lblSend.Text=(counter*6)&\" scan/min\"";
+ //BA.debugLineNum = 295;BA.debugLine="lblSend.Text=(counter*6)&\" scan/min\"";
 mostCurrent._lblsend.setText(BA.ObjectToCharSequence(BA.NumberToString((_counter*6))+" scan/min"));
- //BA.debugLineNum = 294;BA.debugLine="counter=0";
+ //BA.debugLineNum = 296;BA.debugLine="counter=0";
 _counter = (int) (0);
- //BA.debugLineNum = 295;BA.debugLine="lblSend.Visible=True";
+ //BA.debugLineNum = 297;BA.debugLine="lblSend.Visible=True";
 mostCurrent._lblsend.setVisible(anywheresoftware.b4a.keywords.Common.True);
  };
  };
- //BA.debugLineNum = 298;BA.debugLine="setStateScan";
+ //BA.debugLineNum = 300;BA.debugLine="setStateScan";
 _setstatescan();
- //BA.debugLineNum = 299;BA.debugLine="End Sub";
+ //BA.debugLineNum = 301;BA.debugLine="End Sub";
 return "";
 }
 public static String  _tmrmqttreconnect_tick() throws Exception{
- //BA.debugLineNum = 301;BA.debugLine="Sub tmrMQTTReconnect_Tick";
- //BA.debugLineNum = 302;BA.debugLine="If ErroresReconectando>=3 Then";
+ //BA.debugLineNum = 303;BA.debugLine="Sub tmrMQTTReconnect_Tick";
+ //BA.debugLineNum = 304;BA.debugLine="If ErroresReconectando>=3 Then";
 if (_erroresreconectando>=3) { 
- //BA.debugLineNum = 303;BA.debugLine="tmrMQTTReconnect.Enabled=False";
+ //BA.debugLineNum = 305;BA.debugLine="tmrMQTTReconnect.Enabled=False";
 mostCurrent._tmrmqttreconnect.setEnabled(anywheresoftware.b4a.keywords.Common.False);
  };
- //BA.debugLineNum = 305;BA.debugLine="If client.Connected= False Then";
+ //BA.debugLineNum = 307;BA.debugLine="If client.Connected= False Then";
 if (mostCurrent._client.getConnected()==anywheresoftware.b4a.keywords.Common.False) { 
- //BA.debugLineNum = 306;BA.debugLine="connect_MQTT";
+ //BA.debugLineNum = 308;BA.debugLine="connect_MQTT";
 _connect_mqtt();
  };
- //BA.debugLineNum = 308;BA.debugLine="End Sub";
+ //BA.debugLineNum = 310;BA.debugLine="End Sub";
 return "";
 }
 public static String  _topiclocation() throws Exception{
- //BA.debugLineNum = 335;BA.debugLine="Sub topicLocation As String";
- //BA.debugLineNum = 336;BA.debugLine="Return getTopic(True,False)";
+ //BA.debugLineNum = 338;BA.debugLine="Sub topicLocation As String";
+ //BA.debugLineNum = 339;BA.debugLine="Return getTopic(True,False)";
 if (true) return _gettopic(anywheresoftware.b4a.keywords.Common.True,anywheresoftware.b4a.keywords.Common.False);
- //BA.debugLineNum = 337;BA.debugLine="End Sub";
-return "";
-}
-public static String  _topiclocationresult() throws Exception{
- //BA.debugLineNum = 338;BA.debugLine="Sub topicLocationResult As String";
- //BA.debugLineNum = 339;BA.debugLine="Return getTopic(True,True)";
-if (true) return _gettopic(anywheresoftware.b4a.keywords.Common.True,anywheresoftware.b4a.keywords.Common.True);
  //BA.debugLineNum = 340;BA.debugLine="End Sub";
 return "";
 }
+public static String  _topiclocationresult() throws Exception{
+ //BA.debugLineNum = 342;BA.debugLine="Sub topicLocationResult As String";
+ //BA.debugLineNum = 343;BA.debugLine="Return getTopic(True,True)";
+if (true) return _gettopic(anywheresoftware.b4a.keywords.Common.True,anywheresoftware.b4a.keywords.Common.True);
+ //BA.debugLineNum = 344;BA.debugLine="End Sub";
+return "";
+}
 public static String  _topicregistro() throws Exception{
- //BA.debugLineNum = 329;BA.debugLine="Sub topicRegistro As String";
- //BA.debugLineNum = 330;BA.debugLine="Return getTopic(False,False)";
+ //BA.debugLineNum = 331;BA.debugLine="Sub topicRegistro As String";
+ //BA.debugLineNum = 332;BA.debugLine="Return getTopic(False,False)";
 if (true) return _gettopic(anywheresoftware.b4a.keywords.Common.False,anywheresoftware.b4a.keywords.Common.False);
- //BA.debugLineNum = 331;BA.debugLine="End Sub";
+ //BA.debugLineNum = 333;BA.debugLine="End Sub";
 return "";
 }
 public static String  _topicregistroresult() throws Exception{
- //BA.debugLineNum = 332;BA.debugLine="Sub topicRegistroResult As String";
- //BA.debugLineNum = 333;BA.debugLine="Return getTopic(False,True)";
+ //BA.debugLineNum = 334;BA.debugLine="Sub topicRegistroResult As String";
+ //BA.debugLineNum = 335;BA.debugLine="Return getTopic(False,True)";
 if (true) return _gettopic(anywheresoftware.b4a.keywords.Common.False,anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 334;BA.debugLine="End Sub";
+ //BA.debugLineNum = 336;BA.debugLine="End Sub";
 return "";
 }
 public static anywheresoftware.b4a.objects.collections.Map  _twifiscantomap(indoorgeolocation.aps.uvigo.main._twifiscan _awifiscan) throws Exception{
@@ -1685,7 +1808,7 @@ anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("D
  };
  }else {
  //BA.debugLineNum = 228;BA.debugLine="Log(\"MQTT no conectado\")";
-anywheresoftware.b4a.keywords.Common.LogImpl("5786492","MQTT no conectado",0);
+anywheresoftware.b4a.keywords.Common.LogImpl("3786492","MQTT no conectado",0);
  //BA.debugLineNum = 229;BA.debugLine="ToastMessageShow(\"MQTT no conectado\",True)";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("MQTT no conectado"),anywheresoftware.b4a.keywords.Common.True);
  };
